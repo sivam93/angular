@@ -7,15 +7,16 @@ import {Router} from '@angular/router';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  Item1 :string="Item1";
+  Item11 :string="Item1";
   htmlss:string;
   constructor(private router: Router) { 
     
   }
 
   ngOnInit() {
+    this.Item11="Select any one of the cars";
   }
   fill(){
-    this.router.navigate(["cars"]);
+    this.Item11="<mat-card-content><title>BMW SERIES</title><div>Spec details and Availability</div><button mat-icon-button style=\"background-color:purple;\" >Book?</button></mat-card-content>";
   }
 }

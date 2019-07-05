@@ -5,6 +5,8 @@ import { CustomMaterialModule } from './core/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {FormsModule} from '@angular/forms';
+import { CommonModule } from '@angular/common';  
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +24,7 @@ import { CarsComponent } from './cars/cars.component';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     CustomMaterialModule,
     FormsModule,

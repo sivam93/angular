@@ -24,7 +24,9 @@
      
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button (click)="login()" color="primary">Login</button>
+      <button mat-raised-button  color="primary">
+      <div *ngIf="login()"><a href="http://lakshmirajaperumal.atwebpages.com/">Go To Home</a></div>
+      </button>
     </mat-card-actions>
   </mat-card>
 

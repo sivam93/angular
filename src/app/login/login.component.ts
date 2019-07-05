@@ -14,13 +14,15 @@ export class LoginComponent implements OnInit {
 
   username: string;
   password: string;
+  show:boolean;
   ngOnInit() {
   }
-  login() : void {
+  login() : boolean {
     if(this.username == 'admin' && this.password == 'admin'){
-     this.router.navigate(["user"]);
+      this.show=true;
     }else {
-      alert("Invalid credentials");
+      this.show=false;
     }
+    return this.show;
   }
 }
