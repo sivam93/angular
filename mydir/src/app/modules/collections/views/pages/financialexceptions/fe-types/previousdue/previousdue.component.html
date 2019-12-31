@@ -1,0 +1,71 @@
+<div class="d-info__exceptions-block" [ngClass]="{'deleteRow':deleteRow}"> 
+    {{exception}}
+    <ng-container *ngIf="!single">
+        <a class="view-exception"
+        href="javascript:void(0)"
+        (click)="showException = !showException" 
+        >
+            <span *ngIf="!showException; else showDone">View</span>
+            <ng-template #showDone>Close</ng-template>
+        </a>
+    </ng-container>
+    <div *ngIf="showException" class="d-info__exceptions-wrapper">
+        <app-fe-excinfo
+            [data]="commonData"
+        >
+        </app-fe-excinfo>
+        <div class="inner-table d-marginTop">
+            <div class="d-inner__table">
+              <table>
+                <tr>
+                  <th>Credit Note Type</th>
+                  <th>Associates ID</th>
+                  <th>Associates Name</th>
+                  <th>Amount to be Cleared</th>
+                  <th>Agreed Funding</th>
+                  <th>Credit Limit Days</th>
+                </tr>
+                <tr *ngFor="let tabdata of exceptionInfo.tabdata">
+                  <td>{{tabdata.CreditNotType}}</td>
+                  <td>{{tabdata.Associates_id}}</td>
+                  <td>{{tabdata.Associates_Name}}</td>
+                  <td>{{tabdata.AmountNotCleared}}</td>
+                  <td>{{tabdata.AgreedFunding}}</td>
+                  <td>{{tabdata.CreditLimitDays}}</td>
+                </tr>
+              </table>
+            </div>
+        </div>
+        <div class="d-input__wrapper d-marginTop">
+            <div class="d-input width-auto">
+                <div class="d-input__text">
+                    Remarks
+                </div>
+                <div class="d-input__block">
+                    <div class="d-input__textarea">
+                        <textarea
+                            name="remarks" 
+                            [(ngModel)]="remarks" 
+                            required
+                            #model_remarks='ngModel'
+                        >
+                        </textarea>
+                    </div>
+                </div>
+                <div class="d-input__comments">
+                    <ul>
+                        <li *ngFor="let remarks of remarksList">{{remarks}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <app-fe-actions
+            [model_remarks]="model_remarks.invalid"
+            (updateButton)="update()"
+            (SBAButton)="sendBackToAnchor()"
+            (processButton)="process()"
+            (uploadButton)="onUpload()"
+        >
+        </app-fe-actions>
+    </div>
+</div>

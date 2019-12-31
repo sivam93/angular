@@ -1,0 +1,78 @@
+<div class="d-tableHead" [ngClass]="{'show':showTable,'deleting':deleteRow}">
+  <table>
+  <tr [ngClass]="{'show':showTable}">
+      <td>
+          {{feresults.client_id}}
+      </td>
+      <td>
+          {{feresults.client_name}}
+      </td>
+      <td>
+          {{feresults.invoice_no}}
+      </td>
+      <td>
+          Rs. {{invoiceAmount}}
+      </td>
+      <td>
+          {{feresults.invoice_type}}
+      </td>
+      <td>
+          {{feresults.invoice_date  | date : dateFormat}}
+      </td>
+      <td>
+          <span *ngIf="(feresults.modeof_payment != null) ; else Shownull">{{feresults.modeof_payment}}</span>
+          <ng-template #Shownull>-</ng-template>  
+      </td>
+      <td>
+          <span *ngIf="(feresults.exceptions != null && feresults.exceptions.length > 1) ; else single">
+              Multiple  
+              <i class="showNumber">{{feresults.exceptions.length}}</i>
+          </span>
+          <ng-template #single>{{feresults.exceptions[0].name}}</ng-template>
+      </td>
+      <td>
+          <a href="javascript:void(0)" class="d-button" (click)="openSlide(index);">
+                <span *ngIf="!showTable; else showDone">{{tableButton}}</span>
+                <ng-template #showDone><span class="icon icon-up"></span></ng-template>
+          </a>
+      </td>
+  </tr>
+  </table>
+</div>
+<table class="d-info" *ngIf="showTable" [ngClass]="{'d-loader':loader}">
+    <tr>
+        <td *ngIf="feresults.exceptions.length > 1; else singletemplate">
+            <div  [@slideDownUp]="slideStatus"  [@fadeInOut]="fadeStatus" class="d-info__block" [ngClass]="{'multiple':feresults.exceptions.length > 1}" *ngFor="let ex of feresults.exceptions">
+                <div class="d-info__exceptions">
+                    <app-fe-list 
+                        [exception]="ex.name"
+                        [roleid]="roleid"
+                        [single]="false"
+                        [showException]="false"
+                        [exData]="exceptionData"
+                        (invoiceNo)="getInvoiceno($event)"
+                    >
+                    </app-fe-list>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+
+<ng-template #singletemplate>
+    <td>
+        <div class="d-info__block single redPadding" [@slideDownUp]="slideStatus"  [@fadeInOut]="fadeStatus">
+            <app-fe-list 
+                [exception]="feresults.exceptions[0].name"
+                [roleid]="roleid"
+                [single]="true"
+                [showException]="true"
+                [exData]="exceptionData"
+                (invoiceNo)="getInvoiceno($event)"
+            >
+            </app-fe-list>
+        </div>
+    </td>
+</ng-template>
+<app-popup-modal [data]="modal" (restartModal)="resModal($event)" *ngIf="show"></app-popup-modal>

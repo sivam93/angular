@@ -1,0 +1,63 @@
+@import "../../../../../css/variables";
+
+.d-action
+{
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    &__button 
+    {
+        span
+        {
+            display: inline-block;
+            width:4px;
+            height: 4px;
+            border-radius: 50%;
+            vertical-align: middle;
+            background: rgba($secondary-color,0.5);
+            margin: 0 2px;
+        }
+        &:hover,&.show
+        {
+            span 
+            {
+                background: rgba($secondary-color,1);
+            }
+        }
+    }
+    &__block 
+    {
+        position: absolute;
+        right: 40px;
+        top: 30px;
+        background: $table-info-color;
+        padding: 10px 20px;
+        border:solid thin $table-info-border;
+        border-radius: 5px; 
+        box-shadow: 0 0 4px 0 rgba(233, 239, 253, 0.5);
+        display: none;
+        min-width: 130px;
+        z-index: 22;
+        text-align: left;
+        ul 
+        {
+            li 
+            {
+                padding: 7px 0;
+                a 
+                {
+                    color:$input-color;
+                    font-size: $font-size;
+                    &:hover,&.active 
+                    {
+                        color:$secondary-color;
+                    }
+                }
+            }
+        }
+        .active & 
+        {
+            display: block;
+        }
+    } 
+}

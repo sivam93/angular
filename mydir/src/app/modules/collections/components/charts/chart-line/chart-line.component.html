@@ -1,0 +1,19 @@
+<div class="d-chart__block d-linechart">
+    <div class="d-linechart__title">
+        <div class="d-linechart__titleblock" *ngFor="let leg of lineLegends;">
+          <span class="color" ngClass="{{leg.colorClass}}"></span>
+          <span>{{leg.title}}</span> 
+        </div>  
+    </div>  
+    <div class="d-chart__content">
+      <canvas baseChart
+        [datasets]="lineChartData"
+        [labels]="labels"
+        [colors]="lineColors"
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType"
+        [options]="lineChartOptions"
+        >
+      </canvas>
+    </div>
+</div>

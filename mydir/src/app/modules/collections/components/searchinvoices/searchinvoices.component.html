@@ -1,0 +1,9 @@
+<div class="d-search">
+    <input 
+        type="search" 
+        name="searchtext"
+        [(ngModel)]="searchText" 
+        (ngModelChange)="onsearchEnter()"
+        [placeholder]="place"
+    >
+</div>

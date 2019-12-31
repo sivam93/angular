@@ -1,0 +1,17 @@
+<table class="d-table__head">
+    <tr>
+        <th 
+            *ngFor="let head of headerContent" 
+            [ngSwitch]="head" 
+            [ngClass]="(head == 'Status' && module =='salaryrelease') ? 'status-width': ''"
+            [ngStyle]="{'textAlign':textAlign}"
+        >
+            <span *ngSwitchCase="'Invoice Number'">Invoice <br> Number</span>
+            <span *ngSwitchCase="'Invoice Amount'">Invoice <br> Amount</span>
+            <span *ngSwitchCase="'Associate Count'" class="d-textcenter">Associate Count</span>
+            <span *ngSwitchCase="'Payment Aging Days'">Payment <br>Aging Days</span>
+            <span *ngSwitchCase="'Action'" class="d-textcenter">Action</span>
+            <span *ngSwitchDefault>{{head}}</span>
+        </th>
+    </tr>
+</table>

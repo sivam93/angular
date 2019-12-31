@@ -1,0 +1,7 @@
+<div class="d-breadcrumb">
+    <div class="d-breadcrumb__block" *ngFor="let data of linkData">
+      <a [routerLink]="data.link">
+        {{data.text}}
+      </a>
+    </div>
+</div>

@@ -1,0 +1,259 @@
+<div class="d-collections" *ngIf="!loading">
+  <app-heading 
+    [heading]="heading"
+    (loadMonth)="loadStore($event)"
+    [backButton]="false"
+    [pdcCycle]="true"
+    [escalation]="false"
+  >
+  </app-heading> 
+  <div class="d-assets d-marginBottom" *ngIf="anchor">
+      <div class="d-assets__section"
+           [icons]="[
+            'calendar',
+            'recieved',
+            'outstanding'
+           ]"
+           [data]="[
+            totalCollections.totalamount,
+            totalCollections.recievedamount,
+            totalCollections.outstandingamount
+           ]"
+           [textDetails]="[
+            'PDC Collections',
+            'Recieved',
+            'Outstanding'
+           ]"
+           [module]="'totalcollections'"
+      > 
+      </div>
+      <div class="d-assets__section"
+           [icons]="['clients','lockedclients','associates']"
+           [data]="[totalClients.totalclients,totalClients.locked_client,totalClients.totalassociates]"
+           [textDetails]="['Total Clients','Locked Clients','Total Associates']"
+           [module]="'totalclients'"
+      > 
+      </div>
+  </div>
+  <div class="d-chart d-marginBottom" *ngIf="anchor">
+    <div class="d-chart__section">
+      <h2 class="d-chart__heading">
+          Invoices
+      </h2>
+      <app-chart-pie
+        [loaded] = 'chartLoaded'
+        [chartDatas$] ='tableContent$'
+        [loadData]="'Total Invoices'" 
+        [chartLoaded$]='loading$'     
+        >
+      </app-chart-pie>
+    </div>
+    <div class="d-chart__section">
+        <h2 class="d-chart__heading">
+            Exceptions
+        </h2>
+        <app-chart-pie
+          [loaded] = 'chartLoaded'
+          [chartDatas$] ='tableContent$'
+          [loadData]="'Total Exceptions'" 
+          [chartLoaded$]='loading$'          
+        >
+      </app-chart-pie>
+      </div>
+  </div>
+  <div class="d-chart d-marginBottom" *ngIf="manager">
+    <div class="d-chart__section">
+      <h2 class="d-chart__heading heading1">
+          Total Collection for PDC
+      </h2>
+      <div class="d-chart__select">
+        <div class="d-chart__select-block">
+          <ng-select 
+            [items]="items"
+            [allowClear]="true"
+            [active]="['All']"
+            placeholder="No Client selected"
+            bindLabel="name"
+            autofocus
+            (selected)="selected($event)"
+          >
+          </ng-select>
+        </div>
+        <div class="d-chart__select-block">
+          <ng-select 
+            [items]="['MTD','Half Year','Full Year']"
+            [allowClear]="true"
+            [active]="['MTD']"
+            placeholder="Select Period"
+            bindLabel="name"
+            (selected)="selectedPeriod($event)"
+            autofocus
+          >
+          </ng-select>
+          </div>
+      </div>
+      <ng-container *ngIf="(clientName === 'All' && periodType === 'MTD') else otherClients">
+        <app-chart-pie
+          [loaded] = 'chartLoaded'
+          [chartDatas$] ='tableContent$'
+          [loadData]="'All Clients'" 
+          [chartLoaded$]='loading$'   
+          >
+        </app-chart-pie>
+      </ng-container>
+      <ng-template #otherClients>
+          <ng-container  *ngIf="periodType === 'MTD'">
+            <app-chart-pie
+              [loaded] = 'chartLoaded'
+              [loadData]="'Selected Clients'" 
+              [chartLoaded$]='loading$'   
+              >
+            </app-chart-pie>
+          </ng-container>
+          <ng-container  *ngIf="periodType === 'Half Year'">
+              <app-chart-line
+                [data]="lineChartData"
+                [labels]="getMonthList"
+                [lineColors]="lineColors"
+                [lineLegends]="lineLegends"
+              >
+              </app-chart-line>
+          </ng-container>
+          <ng-container  *ngIf="periodType === 'Full Year'">
+              <app-chart-line
+                [data]="lineChartData"
+                [labels]="getMonthList"
+                [lineColors]="lineColors"
+                [lineLegends]="lineLegends"
+              >
+              </app-chart-line>
+          </ng-container>
+      </ng-template>
+    </div>
+    <div class="d-chart__section">
+      <h2 class="d-chart__heading heading1">
+          Total Invoices ( 500 )   
+      </h2>
+      <div class="d-chart__select">
+        <div class="d-chart__select-block">
+          <ng-select 
+            [items]="items"
+            [allowClear]="true"
+            [active]="['All']"
+            placeholder="No Client selected"
+            bindLabel="name"
+            autofocus
+            (selected)="selectedClient($event)"
+          >
+          </ng-select>
+        </div>
+      </div>
+      <app-chart-pie
+        [loaded] = 'chartLoaded'
+        [chartDatas$] ='tableContent$'
+        [loadData]="'Total Invoices Ops Manager'" 
+        [chartLoaded$]='loading$'     
+        >
+      </app-chart-pie>
+    </div>
+    <div class="d-chart__section">
+        <app-tabs
+          [items]="[
+            'All Aging Payments',
+            'Client Wise Aging Payments'
+          ]"
+          [active]="activeTab"
+          (showTab)="showTab($event)"
+        >
+        </app-tabs>  
+        <ng-container *ngIf="activeTab === 'All Aging Payments'">
+          <app-chart-bar>
+
+          </app-chart-bar> 
+        </ng-container>
+        <ng-container *ngIf="activeTab === 'Client Wise Aging Payments'">
+            <div class="d-chart__select">
+                <div class="d-chart__select-block">
+                  <ng-select 
+                    [items]="items"
+                    [allowClear]="true"
+                    [active]="[clientNameA]"
+                    placeholder="No Client selected"
+                    bindLabel="name"
+                    autofocus
+                    (selected)="selectedAging($event)"
+                  >
+                  </ng-select>
+                </div>
+                <div class="d-chart__select-block">
+                  <ng-select 
+                    [items]="['MTD','Half Year','Full Year']"
+                    [allowClear]="true"
+                    [active]="[periodTypeA]"
+                    placeholder="Select Period"
+                    bindLabel="name"
+                    (selected)="selectedAgingPeriod($event)"
+                    autofocus
+                  >
+                  </ng-select>
+                  </div>
+            </div>
+            <ng-container *ngIf="(periodTypeA === 'MTD') else otherAgings">
+              <app-chart-bar></app-chart-bar> 
+            </ng-container>
+            <ng-template #otherAgings>
+                <ng-container  *ngIf="periodTypeA === 'Half Year'">
+                    <app-chart-line
+                    [data]="lineChartData"
+                    [labels]="getMonthList"
+                    [lineColors]="lineColors"
+                    [lineLegends]="lineLegends"
+                    >
+                    </app-chart-line>
+                </ng-container>
+                <ng-container  *ngIf="periodTypeA === 'Full Year'">
+                    <app-chart-line
+                    [data]="lineChartData"
+                    [labels]="getMonthList"
+                    [lineColors]="lineColors"
+                    [lineLegends]="lineLegends"
+                    >
+                    </app-chart-line>
+                </ng-container>
+            </ng-template>
+        </ng-container>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="d-tabs">
+  <app-nav-tabs 
+  [heading]="heading"
+  >
+ 
+  
+  </app-nav-tabs>
+  <div class="d-tab__views">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+<div class="main-loader" *ngIf="loading">
+  <div class="sk-circle">
+      <div class="sk-circle1 sk-child"></div>
+      <div class="sk-circle2 sk-child"></div>
+      <div class="sk-circle3 sk-child"></div>
+      <div class="sk-circle4 sk-child"></div>
+      <div class="sk-circle5 sk-child"></div>
+      <div class="sk-circle6 sk-child"></div>
+      <div class="sk-circle7 sk-child"></div>
+      <div class="sk-circle8 sk-child"></div>
+      <div class="sk-circle9 sk-child"></div>
+      <div class="sk-circle10 sk-child"></div>
+      <div class="sk-circle11 sk-child"></div>
+      <div class="sk-circle12 sk-child"></div>
+  </div>
+</div>

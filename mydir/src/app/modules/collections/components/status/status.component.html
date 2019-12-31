@@ -1,0 +1,10 @@
+<ng-container *ngIf="status === 'pending' else paid">
+    <span class="d-status d-{{status}}">
+        Pending
+    </span>
+</ng-container>
+<ng-template #paid>
+  <span class="d-status d-{{status}}">
+      Paid
+  </span>
+</ng-template>

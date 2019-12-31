@@ -1,0 +1,79 @@
+@import "../../../../../../css/variables";
+.consolidated{
+    &-elseCondition{
+      color:red;
+      font-size: 25px;
+      align-content: center;
+      padding:130px  130px 130px 420px;
+    }
+    &-wrapper{
+        width: 1190px;
+        height: 525px;
+        border-radius: 8px;
+        border: solid 1px #e7f1ff;
+        background-color: #ffffff;
+        margin-top:31px;
+    }
+    &-tableheader{
+        background-color: #f0f1f6; 
+        display: table-row;
+        width: 100px
+        
+        
+    }
+    &-label{
+      position: absolute;
+      top: 519px;
+      right: 50px;
+      select{
+        display: inline-block;
+       // margin-right: 10px;
+        border:solid 1px #353f84;
+        background: $white-color url(src/assets/icon-arrowdown-1.svg) no-repeat 90% center;
+        box-shadow: 0 2px 4px 0 #e9effd;
+        color:$secondary-color;
+        width:40px;
+        line-height: 20px;
+    //    height: 37px;
+        -webkit-appearance: none;
+        :hover{
+          border:solid 1px black;
+        }
+        
+    }
+    select::-ms-expand {display: none; }
+ 
+    }
+    
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 10px;
+    font-size: 14px;
+    letter-spacing: normal;
+    color: #3d447a;
+    font-stretch: normal;
+    font-style: normal;
+  }
+  th{
+    background-color: #f0f1f6;
+    font-weight: 600; 
+  }
+  td{
+      text-align: center;
+  }
+  .sample{
+    margin-top:-8px;
+  }
+
+  .my-pagination  {
+   
+    margin-left: 900px !important;
+  
+  }
+  

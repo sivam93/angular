@@ -1,0 +1,166 @@
+.icon 
+{
+    position: relative;
+    &::before 
+    {
+        content: "";
+        position: absolute;
+
+    }
+}
+
+$nav-icons : "dashboard","input","invoice","collections","release","reconcile";
+
+@each $nav in $nav-icons{
+    .icon-#{$nav}
+    {
+        &:before 
+        {
+            background: url("../assets/icon-"+$nav+".svg") no-repeat;
+        }
+        &.active,&:hover
+        {
+            &:before 
+            {
+                background: url("../assets/icon-"+$nav+"-white.svg") no-repeat;
+            }
+        }
+    }
+}
+
+
+
+$assets-icons : ("calendar",#f5f7fc),
+                ("recieved",#f3f1ff),
+                ("outstanding",#fff8e4),
+                ("clients",#ebf9ea),
+                ("lockedclients",#f7e7e1),
+                ("associates",#e1eaf7);
+
+@each $nav-icon,$nav-color in $assets-icons {      
+    .icon-#{$nav-icon} 
+    {
+        background: #{$nav-color};
+        &:before
+        {
+            background: url("../assets/icon-"+$nav-icon+".svg") no-repeat center;
+        }
+        
+    }
+}         
+
+
+$table-color :  ("color1",#1f83ec),
+                ("color2",#21c67d),
+                ("color3",#ffb528),
+                ("color4",#5b3cf1),
+                ("color5",#7240ff),
+                ("color6",#ffea4b),
+                ("color7",#f436a4),
+                ("color8",#76e8ca),
+                ("color9",#7778f6),
+                ("color10",#ff8f6c),
+                ("color11",#ff5578),
+                ("color12",#6180f4),
+                ("color13",#ffab16),
+                ("color14",#7e5597),
+                ("color15",#0cc130),
+                ("color16",#ffdc5d),
+                ("color17",#f66e6c),
+                ("color18",#00b5ff),
+                ("color19",#ff5ecb),
+                ("color21",#6fceff);
+
+
+
+
+@each $class,$color in $table-color
+{
+    .#{$class}
+    {
+        background: #{$color};
+    }
+}
+
+.icon-success
+{
+    width:22px;
+    height: 22px;
+    background: url(../assets/icon-success.svg) no-repeat center;
+}
+.icon-close
+{
+    width:20px;
+    height: 20px;
+    background: url(../assets/icon-close.svg) no-repeat center;
+}
+
+.icon-view 
+{
+    &:before 
+    {
+        width:20px;
+        height: 20px;
+        left:0;
+        background: url(../assets/icon-view.svg) no-repeat center;
+    }
+}
+
+.icon 
+{
+
+    &.icon-up 
+    {
+        display: block;
+        &:before 
+        {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            display: block;
+            border-left: solid 4px #353f84;
+            border-bottom: solid 4px #353f84;
+            left:-5px;
+            top: 8px;
+            right: 0;
+            margin: auto;
+            transform: rotate(-225deg) translateY(-50%);
+        }
+    }
+}
+
+.icon-attach
+{
+    display: inline-block;
+    vertical-align: middle;
+    width:15px;
+    height: 15px;
+    background: url(../assets/icon-attach.svg) no-repeat center;
+}
+
+.icon-backarrow
+{
+    display: inline-block;
+    vertical-align: middle;
+    width:30px;
+    height: 20px;
+    margin-right: 5px;
+    background: url(../assets/icon-backarrow.svg) no-repeat center;
+}
+.icon-edit
+{
+    display: inline-block;
+    vertical-align: middle;
+    width:30px;
+    height: 16px;
+    background: url(../assets/icon-edit.svg) no-repeat center;
+}
+.icon-closepopup
+{
+    display: inline-block;
+    vertical-align: middle;
+    width:30px;
+    height: 25px;
+    background: url(../assets/icon-close-3.svg) no-repeat center;
+}

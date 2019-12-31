@@ -1,0 +1,22 @@
+<div class="d-tabs__list d-marginBottom">
+  <div *ngIf="heading=='Collections' else elseBlock">
+  <ul>
+    <ng-container *ngFor="let nav of navLinks">
+      <li>
+        <a [routerLink]="nav.link" routerLinkActive="active">{{nav.label}} ({{nav.count}})</a>
+      </li>
+    </ng-container>
+    
+  </ul>
+</div>
+<ng-template #elseBlock>
+  <ul>
+    <ng-container *ngFor="let nav of navLinksReconcileAnchor">
+      <li>
+        <a [routerLink]="nav.link" routerLinkActive="active">{{nav.label}}</a>
+      </li>
+    </ng-container>
+  </ul>
+ 
+</ng-template>
+</div>

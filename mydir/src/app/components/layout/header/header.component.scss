@@ -1,0 +1,90 @@
+@import "../../../../css/variables";
+
+.d-header
+{
+    height: 45px;  
+    box-shadow: 0 2px 4px 0 rgba(242, 242, 242, 0.5);
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+    background: $primary-bg-color;
+    &__menu 
+    {
+        display: block;
+        cursor: pointer;
+        position: relative;
+        span 
+        {
+            width: 42px;
+            height: 42px;
+            display: block;
+            background: $profile-color;
+            border-radius: 50%;
+            line-height: 42px;
+            text-align: center;
+            position: relative;
+            margin-right: 20px;
+            font-size: $font-size-large;
+            font-weight: 600;
+            color:$white-color;
+            transition: all ease-in 0.2s;
+            &:before 
+            {
+                content:"";
+                position: absolute;
+                right:-20px;
+                width:10px;
+                height: 6px;
+                background: url(../../../../assets/icon-arrowdown.svg) no-repeat;
+                background-size: contain;
+                top:50%;
+                transform: translateY(-50%);
+            }
+        }
+        .show & 
+        {
+            span 
+            {
+                background: darken($profile-color,10%);
+            }
+        }
+        &-block 
+        {
+            position: absolute;
+            right: 30px;
+            top: 63px;
+            width: 150px;
+            padding: 10px 0;
+            z-index: 99;
+            background: $white-color;
+            box-shadow: 0 0 4px 0 $table-info-border;
+            opacity: 0;
+            visibility: hidden;
+            transition: all ease-in 0.2s;
+            transform: translateY(30px);
+            ul 
+            {
+                li 
+                {
+                    a 
+                    {
+                        display: block;
+                        padding: 10px 15px;
+                        color:$secondary-color;
+                        cursor: pointer;
+                    }
+                    &:hover 
+                    {
+                        background: $primary-color;
+                    }
+                }
+            }
+            .show & 
+            {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0px);
+            }
+        }
+    }
+}

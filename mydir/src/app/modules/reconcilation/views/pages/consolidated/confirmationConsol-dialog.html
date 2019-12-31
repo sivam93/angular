@@ -1,0 +1,31 @@
+<div *ngIf="status" class="centerAlign">
+<table >
+    <tr>
+        <th>Field</th>
+        <th>Type</th>
+    </tr>
+    <tr *ngFor="let item of details">
+        <td>{{item.Field}}</td>
+        <td>{{item.Type}}</td>
+    </tr>
+</table>
+</div>
+<div *ngIf="!status">
+<span>
+<img style="height: 80px;width: 80px;float:left" src="assets/timer.svg"></span>
+<span style="text-align: center;float:left">Your current session expired. <br>Please Re-Login again
+</span>
+<button   class="dialogButton" (click)=onYesClick()>OK</button>
+</div>
+
+
+<!--
+  <h2 stspanyle="color:red;font-size:18px;font-weight: bold;">Please fill the data according to the below instructions</h2>
+      <p>If the column is of type Text - Only Alphabets are Allowed<span style="color:blue;font-weight:bold;">[a-zA-z]
+          ex: John </span></p>
+      <p>If the Column is of type Numeric- Only numbers are allowed with 3 decimals max <span
+          style="color:blue;font-weight:bold;">[0-9] ex: 99.000</span></p>
+      <p>If the Column is of type Date- Fill it with the particular date Format<span
+          style="color:blue;font-weight:bold;">[dd/mm/yyyy]</span></p>
+      <p>If the Column if of type Alphanumeric - Both Numbers and alphabets are allowed along with the specified special characters<span style="color:blue;font-weight:bold;">[- &-/.] ex: T0000/John </span></p>
+-->

@@ -1,0 +1,51 @@
+<ng-container *ngIf="label">
+    <div class="d-input__text" *ngIf="label">
+        {{label}}
+    </div>
+</ng-container>
+<div class="d-input__block" *ngIf="(type == 'number' || type == 'text') else other">
+        <input 
+            [type]="type" 
+            name="textfield"
+            required="validation"
+            [(ngModel)]="inputValue"
+            #textfield="ngModel"
+            [class.field-error]="validation.required && textfield.invalid"
+            (ngModelChange)="inputValueChange.emit(inputValue)"
+            [disabled]="disabled"
+        />
+        <span  *ngIf="validation.required" [ngClass]="textfield.invalid ? 'error':'success'">{{validation.message}}</span>
+</div>
+
+<ng-template #other>
+    <div class="d-input__block">
+        <div class="d-input__textarea" *ngIf="type == 'textarea'">
+            <textarea
+                [(ngModel)]="inputValue"
+                (ngModelChange)="inputValueChange.emit(inputValue)"
+                #textfield="ngModel"
+            >
+            </textarea>
+        </div>
+    </div>
+    <div class="d-input__block">
+    <ng-container  *ngIf="type == 'select'">
+        <div class="d-input__select">
+            <span [class.field-error]="validation.required && textfield.invalid">
+                    <div *ngIf="inputValue else select">{{inputValue}}</div>
+                    <ng-template #select>{{validation.message}}</ng-template>
+                </span>
+            <select  
+                name="modeOfPayment" 
+                required="validation"
+                [(ngModel)]="inputValue" 
+                #textfield="ngModel"
+                (ngModelChange)="inputValueChange.emit(inputValue)"
+            >
+                <option [value]="mode" *ngFor="let mode of selectValues">{{mode}}</option>
+            </select>
+        </div>
+        <span  *ngIf="validation.required" [ngClass]="textfield.invalid ? 'error':'success'">{{validation.message}}</span>
+      </ng-container>    
+    </div>   
+</ng-template>

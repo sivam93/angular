@@ -1,0 +1,55 @@
+<div [ngSwitch]="exception">
+    <app-zeronetpay 
+        *ngSwitchCase="'Zero net pay'" 
+        [exception]="exception" 
+        [showException]="showException"
+        [single]="single"
+        [roleid]="roleid"
+        [data]="exData"
+    ></app-zeronetpay>
+    <app-previousdue 
+        *ngSwitchCase="'Previous Due'" 
+        [exception]="exception" 
+        [showException]="showException"
+        [single]="single"
+        [roleid]="roleid"
+        [data]="exData"
+        (invoiceNo)="getInvoiceno($event)"
+    ></app-previousdue>
+    <app-agreementexpired
+        *ngSwitchCase="'Agreement Expired'" 
+        [exception]="exception" 
+        [showException]="showException"
+        [single]="single"
+        [roleid]="roleid"
+        [data]="exData"
+        (invoiceNo)="getInvoiceno($event)"
+    ></app-agreementexpired>
+    <app-futuredatepdc
+        *ngSwitchCase="'Future Date PDC'" 
+        [exception]="exception" 
+        [showException]="showException"
+        [single]="single"
+        [roleid]="roleid"
+        [data]="exData"
+        (invoiceNo)="getInvoiceno($event)"
+    ></app-futuredatepdc>
+    <app-advancepool
+        *ngSwitchCase="'Advance Pool'" 
+        [exception]="exception" 
+        [showException]="showException"
+        [single]="single"
+        [roleid]="roleid"
+        [data]="exData"
+        (invoiceNo)="getInvoiceno($event)"
+    ></app-advancepool>
+    <app-lockstatus
+        *ngSwitchCase="'Lock Status of the Client'" 
+        [exception]="exception" 
+        [showException]="showException"
+        [single]="single"
+        [roleid]="roleid"
+        [data]="exData"
+        (invoiceNo)="getInvoiceno($event)"
+    ></app-lockstatus>
+</div>

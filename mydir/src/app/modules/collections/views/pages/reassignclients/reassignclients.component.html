@@ -1,0 +1,105 @@
+<div class="d-collections">
+    <app-breadcrumb
+      [linkData]="data"
+    >
+    </app-breadcrumb>
+    <app-heading 
+      [heading]="heading"
+      [backButton]="false"
+      [pdcCycle]="false"
+      [escalation]="false"
+    >
+  </app-heading> 
+  <div class="d-clientInfo d-marginBottom">
+    <div class="d-clientInfo__block">
+      <span class="d-clientInfo__head">Employee ID :</span> 
+      <span class="d-clientInfo__text">TL_An_123_Shk</span>
+    </div>
+    <div class="d-clientInfo__block">
+      <span class="d-clientInfo__head">Employee Name :</span> 
+      <span class="d-clientInfo__text">Shashank Kumar</span>
+    </div>
+    <div class="d-clientInfo__block">
+      <span class="d-clientInfo__head">Joining Date :</span> 
+      <span class="d-clientInfo__text">15/06/2018</span>
+    </div>
+    <div class="d-clientInfo__block">
+      <span class="d-clientInfo__head">Status Active :</span> 
+      <span class="d-clientInfo__text d-active"> Hitesh</span>
+    </div>
+    <div class="d-clientInfo__block">
+      <span class="d-clientInfo__head">Phone Number : </span> 
+      <span class="d-clientInfo__text"> 9945796644</span>
+    </div>
+    <div class="d-clientInfo__block">
+      <span class="d-clientInfo__head">Mail ID : </span> 
+      <span class="d-clientInfo__text">Shashank Kumar_01@gmail.com</span>
+    </div>
+  </div>
+  <div class="d-asscoiatelist d-marginBottom">
+      <div class="d-asscoiatelist__head">
+          <h3 class="d-heading3">
+              Available Anchors
+          </h3> 
+          <div class="d-spacer"></div>   
+          <div class="d-associate__actions">
+              <app-searchinvoices
+                  [place]="'Search'"
+              >
+              </app-searchinvoices>
+            <div class="d-input__button">
+              <button class="d-button">
+                  <span>Save</span>  
+              </button>
+              <button class="d-button">
+                  <span>Cancel</span>  
+              </button>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="d-tabs__contenttable d-associate d-marginBottom">
+        <table>
+            <tr>
+                <th [attr.colspan]="associateHeader.length" class="d-tabs__head">
+                    <app-tableheader
+                        [headerContent]="associateHeader"
+                        [textAlign]="'left'"
+                    >
+                    </app-tableheader>
+                </th>
+            </tr>
+            <tr *ngFor="let item of clientList; let i = index">
+              <td [attr.colspan]="associateHeader.length">
+                <div class="d-associate__list">
+                  <table>
+                    <tr>
+                      <td style="padding-left: 50px">
+                          <div class="d-associate__checkbox">
+                              <div class="d-input__checkbox"> 
+                                  <input type="checkbox" id="releaseittoday{{i}}">
+                                  <label for="releaseittoday{{i}}"></label>
+                              </div>
+                              <a href="#" class="d-linkcolor">
+                                {{item.emp_id}}
+                              </a>
+                          </div>
+                      </td>
+                      <td>
+                          {{item.emp_name}}
+                      </td>
+                      <td>
+                          {{item.status}}
+                      </td>
+                      <td class="d-textcenter">
+                          <a class="d-button">{{item.action}}</a> 
+                        </td>
+                    </tr>
+                  </table>
+                </div>
+              </td>
+            </tr>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,90 @@
+<div class="d-input__wrapper line d-marginTop">
+    <div class="d-input" *ngIf="data.invoice_no === null || data.invoice_no">
+        <div class="d-input__text">
+            Invoice No
+        </div>
+        :
+        <ng-container *ngIf="data.invoice_no; else nodata">
+            {{data.invoice_no}}
+        </ng-container> 
+    </div>
+    <div class="d-input" *ngIf="data.invoice_amount === null || data.invoice_amount">
+        <div class="d-input__text">
+            Invoice Amount
+        </div>
+        :
+        <ng-container *ngIf="data.invoice_amount; else nodata">
+            {{data.invoice_amount | moneyconverter}}
+        </ng-container> 
+    </div>
+    <div class="d-input" *ngIf="data.DateofGeneration === null || data.DateofGeneration">
+        <div class="d-input__text">
+            Date Of Generation
+        </div>
+        :
+        <ng-container *ngIf="data.DateofGeneration; else nodata">
+            {{data.DateofGeneration}}
+        </ng-container> 
+    </div>
+    <div class="d-input" *ngIf="data.bank_name === null || data.bank_name">
+        <div class="d-input__text">
+            From Bank
+        </div>
+        :
+        <ng-container *ngIf="data.bank_name; else nodata">
+            {{data.bank_name}}
+        </ng-container> 
+    </div>
+    <div class="d-input" *ngIf="data.ifsc_code === null || data.ifsc_code">
+        <div class="d-input__text">
+            IFSC Code
+        </div>
+        : 
+        <ng-container *ngIf="data.ifsc_code; else nodata">
+            {{data.ifsc_code}}
+        </ng-container> 
+    </div>
+    <div class="d-input" *ngIf="data.amount_received === null || data.amount_received">
+        <div class="d-input__text">
+            Amount Received
+        </div>
+        <ng-container *ngIf="data.amount_received; else nodata">
+            : {{data.amount_received | moneyconverter}}  
+        </ng-container>
+    </div>
+    <div class="d-input" *ngIf="data.utr_number === null || data.utr_number">
+        <div class="d-input__text">
+            UTR Number
+        </div>
+        <ng-container *ngIf="data.utr_number; else nodata">
+            : {{data.utr_number}}
+        </ng-container>
+    </div>
+    <div class="d-input" *ngIf="data.mode_of_payment === null || data.mode_of_payment">
+            <div class="d-input__text">
+                Mode Of Payment
+            </div>
+            <ng-container *ngIf="data.mode_of_payment; else nodata">
+                : {{data.mode_of_payment}}
+            </ng-container>
+        </div>
+    <div class="d-input" *ngIf="data.payment_date === null || data.payment_date">
+        <div class="d-input__text">
+            Payment Date
+        </div>
+        <ng-container *ngIf="data.payment_date; else nodata">
+            : {{data.payment_date | date:'shortDate' }}
+        </ng-container>
+    </div>
+    <div class="d-input" *ngIf="data.payment_date === null || data.payment_date">
+        <div class="d-input__text">
+            Payment Time
+        </div>
+        <ng-container *ngIf="data.payment_date; else nodata">
+            : {{data.payment_date | date:'shortTime' }}
+        </ng-container>
+    </div>
+</div>
+
+
+<ng-template #nodata>null</ng-template>

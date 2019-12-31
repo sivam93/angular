@@ -1,0 +1,74 @@
+$font-family: "Source Sans Pro', Open Sans";  
+$font-family-sec: 'Open Sans', sans-serif;
+
+
+$font-size: 14px; 
+$font-size-small: $font-size - 2px;
+$font-size-large: $font-size + 2px;
+$font-size-extraLarge: $font-size + 4px;
+
+$primary-color : #f5f7fc;
+$secondary-color : #353f84;
+$heading-color-primary : #242e42;
+$heading-color-secondary : #20222e;
+$primary-text-color: #596a74;
+
+$white-color : #ffffff;
+$black-color : #000000;
+$grey-color: #333333;
+$grey-color-light: #3c3c3c;
+
+$primary-bg-color : #f5f7fc;
+
+
+$tab-color:#c6c8d5;
+$tab-color-active:#4381c1; // tab border
+
+
+$table-border-color:#e1e4f5;
+$table-head-color: #f0f1f6;
+$table-head-text-color:#3d447a;
+$table-content-text-color:#50567f;
+$table-info-color:#f6f8fd;
+$table-info-border:#d9ddf5;
+$table-info-input-border : #eef4fd;
+$table-info-input-disabled-bg: #e4e8ef;
+$table-info-input-disabled-color: #727b8f;
+$table-info-input-disabled-info : #818b9e;
+
+
+$border-color:#e4ebf5;
+$border-color-1:#eaedef;
+$border-color-2:#eff3fa;
+
+
+$profile-color:#ed9d8e;
+$nav-active : #4e589b;
+
+$border-radius:10px;
+$margin-top: 15px;
+$margin-bottom: 25px;
+$margin-left: 30px;
+
+$box-shadow : 0 0 10px 0 rgba(233, 239, 253, 0.15);
+
+$input-color:#9a9cb3;
+
+
+$error-danger : #ffa7a7;
+$comments-color:#4c527c;
+
+$link-color: #3054ad;
+$anchor-color: #3c8fa5;
+
+$pending-color:#fff9f4;
+$pending-color-border:#fabe8c;
+$pending-color-text:#d68139;
+
+$paid-color:#f4fff5;
+$paid-color-border:#19bc1c;
+$paid-color-text:#33b20c;
+
+$clientInfo-border: #7989e6;
+$popup-close-color:#cacddb;
+$popup-head-border:#979797;

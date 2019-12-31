@@ -1,0 +1,7 @@
+<div class="d-model d-success" [ngClass]="{'active':modalShow}">
+  <span class="icon icon-success"></span>
+  <div class="d-model__text">
+    Invoice <strong>{{data.modalInvoiceNo}}</strong> {{data.text}}
+  </div>
+  <span class="icon icon-close" (click)="closeModal()"></span>
+</div>

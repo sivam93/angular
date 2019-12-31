@@ -1,0 +1,10 @@
+<div class="d-nav">
+    <div class="d-navlogo">
+      <a href="#">
+        <img src="assets/tl-logo.png" alt="">
+      </a>
+    </div>
+    <ul>
+      <li *ngFor="let nav of navLinks"><a  [routerLink]="nav.link" routerLinkActive="active"  class="icon icon-{{nav.icon}}">{{nav.name}}</a></li>
+    </ul>
+</div>

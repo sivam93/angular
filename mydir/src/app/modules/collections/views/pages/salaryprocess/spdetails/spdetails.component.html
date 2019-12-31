@@ -1,0 +1,126 @@
+<div class="d-tableHead" [ngClass]="{'show':showTable}">
+    <table>
+        <tr>
+            <td>
+                {{tableContent.client_id}}
+            </td>
+            <td>
+                {{tableContent.client_name}}
+            </td>
+            <td>
+                {{tableContent.invoice_no}}
+            </td>
+            <td>
+            Rs. {{invoiceAmount}} 
+            </td>
+            <td>
+            {{tableContent.invoice_type}}
+            </td>
+            <td>
+                {{tableContent.invoice_date | date : dateFormat}}
+            </td>
+            <td class="d-textcenter">
+                {{tableContent.Associatecount}}
+            </td>
+            <td>
+                {{tableContent.modeof_payment}}
+            </td>
+            <td>
+                <a href="javascript:void(0)" class="d-button" (click)="openSlide(index);">
+                    <span *ngIf="!showTable; else showDone">{{tableButton}}</span>
+                    <ng-template #showDone><span class="icon icon-up"></span></ng-template>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+  <table class="d-info" *ngIf="showTable" [ngClass]="{'d-loader':loader}">
+    <tr>
+        <td class="d-nopadding">
+            <div class="d-info__wrapper" [@slideDownUp]="slideStatus"  [@fadeInOut]="fadeStatus">  
+                <div class="d-info__block">
+                    <div class="d-input__wrapper">
+                        <div class="d-input" [ngClass]="{'disabled':status}">
+                            <div class="d-input__text">
+                            Amount Recieved:
+                            </div>
+                            <div class="d-input__block">   
+                                <input type="number"  [(ngModel)]="tableContent.invoice_amount" [disabled]="status">
+                            </div>
+                        </div>
+                        <div class="d-input" [ngClass]="{'disabled':status}">
+                            <div class="d-input__text">
+                                Adjustment Amount :
+                            </div>
+                            <div class="d-input__block">
+                                <input type="number"  [(ngModel)]="tableContent.adjusted_amount" [disabled]="status">
+                            </div>
+                        </div>
+                        <div class="d-input" [ngClass]="{'disabled':status}">
+                            <div class="d-input__text">
+                                TDS :
+                            </div>
+                            <div class="d-input__block">
+                                <input type="number"  [(ngModel)]="tds" [disabled]="status">
+                            </div>
+                        </div>
+                        <div class="d-input" [ngClass]="{'disabled':status}">
+                            <div class="d-input__text">
+                                TDS Amount :
+                            </div>
+                            <div class="d-input__block">
+                                    <input type="text" [(ngModel)]="tableContent.tdsAmount" [disabled]="status">
+                            </div>
+                        </div>
+                        <div class="d-input" [ngClass]="{'disabled':status}">
+                            <div class="d-input__text">
+                                UTR NUmber :
+                            </div>
+                            <div class="d-input__block">
+                                <input type="text" [(ngModel)]="tableContent.utr_number" [disabled]="status">
+                            </div>
+                        </div>
+                        <div class="d-input" [ngClass]="{'disabled':status}">
+                            <div class="d-input__text">
+                                Payment Date :
+                            </div>
+                            <div class="d-input__block">
+                            <input type="text" [(ngModel)]="tableContent.payment_date" [disabled]="status">
+                            </div>
+                        </div>
+                        <div class="d-input" [ngClass]="{'disabled':status}">
+                            <div class="d-input__text">
+                                Mode Of Payment :
+                            </div>
+                            <div class="d-input__block">
+                                <div class="d-input__select">
+                                    <span>{{modeOfPaymentSelected}}</span>
+                                    <select [(ngModel)]="modeOfPaymentSelected"  [disabled]="status">
+                                        <option [value]="mode" *ngFor="let mode of modeOfPayment">{{mode}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-input" [ngClass]="{'disabled':status}">
+                            <div class="d-input__text">
+                                Balance :
+                            </div>
+                            <div class="d-input__block">
+                                <input type="number" [(ngModel)]="tableContent.balance"  [disabled]="status">
+                            </div>
+                        </div>
+                        <div class="d-input" [ngClass]="{'disabled':status}">
+                            <div class="d-input__text">
+                                Total Amount :
+                            </div>
+                            <div class="d-input__block">
+                                <input type="number" [(ngModel)]="tableContent.invoice_amount"  [disabled]="status">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </td>
+    </tr>
+  </table>

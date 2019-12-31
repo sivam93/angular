@@ -1,0 +1,52 @@
+@import "../../../css/variables";
+
+.d-model
+{
+    position: fixed;
+    top:-175px;
+    height: 45px;
+    color:$white-color;
+    font-size:16px;
+    line-height: 45px;
+    max-width: 500px;
+    padding-left:60px;
+    background: rgba($black-color,0.7);  
+    box-shadow: 0 0 10px 0 #b1b1b1;
+    border-radius: 5px;
+    left:0;
+    right:0;
+    margin: auto;
+    transition: all cubic-bezier(0.17, 0.01, 0.56, 1.13) 0.3s;
+    z-index: 999;
+    &.active 
+    {
+        top:35px;
+    }
+    .icon 
+    {
+        position: absolute;
+        &.icon-success,&.icon-close 
+        {
+            position: absolute;
+            top:0;
+            bottom: 0;
+            margin: auto;
+        }
+        &.icon-success
+        {
+            left:30px;
+        }
+        &.icon-close 
+        {
+            right:20px;
+            cursor: pointer;
+        }
+    }
+    &__text 
+    {
+        strong
+        {
+            font-weight: bold;
+        }
+    }
+}

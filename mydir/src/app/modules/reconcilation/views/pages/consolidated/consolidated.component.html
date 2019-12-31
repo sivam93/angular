@@ -1,0 +1,136 @@
+<app-navigation [MothSelector]="true" (reports)="reports($event)" (download)="onClickDownload($event)"
+  (selectedMonths)="selectedMonth($event)" selectType="consolidated"></app-navigation>
+<ngx-spinner size="large" color="#353f84" type="ball-clip-rotate" [fullScreen]="true"></ngx-spinner>
+<div class="consolidated-wrapper">
+  <div *ngIf="talbleready">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="mat-elevation-z8">
+      <ng-container matColumnDef="client_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CLINET ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.client_id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="client_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>CLINET NAME </th>
+        <td title="{{element.client_name}}" mat-cell class="sample" *matCellDef="let element"> {{element.client_name}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="corp_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CORP ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.corp_id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="corp_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CORP NAME </th>
+        <td title="{{element.corp_name}}" mat-cell class="sample" *matCellDef="let element"> {{element.corp_name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="mandate_type">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> MANDATE TYPE </th>
+        <td mat-cell class="sample" *matCellDef="let element"> {{element.mandate_type}} </td>
+      </ng-container>
+<!--
+      <ng-container matColumnDef="client_status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CLIENT STATUS </th>
+        <td [ngStyle]="{'color': getRowColor(element.client_status)}" mat-cell *matCellDef="let element">
+          {{element.client_status}} </td>
+      </ng-container>
+    -->
+      <ng-container matColumnDef="client_status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CLIENT STATUS </th>
+        <td mat-cell *matCellDef="let element">
+          {{element.client_status}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="invoiceno">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> INVOICE NO. </th>
+        <td mat-cell *matCellDef="let element"> {{element.invoiceno}} </td>
+      </ng-container>
+
+      
+      <ng-container matColumnDef="invoice_no">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> INVOICE NO. </th>
+        <td mat-cell *matCellDef="let element"> {{element.invoice_no}} </td>
+      </ng-container>
+
+            <ng-container matColumnDef="release_type">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> RELEASE TYPE </th>
+        <td mat-cell *matCellDef="let element"> {{element.release_type}} </td>
+      </ng-container>
+
+         <ng-container matColumnDef="release_amount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> RELEASE AMOUNT </th>
+        <td mat-cell *matCellDef="let element"> {{element.release_amount}} </td>
+      </ng-container>
+
+<!---->
+      <ng-container matColumnDef="asscno">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ASSOCIATE COUNT </th>
+        <td style="text-align: center;" mat-cell *matCellDef="let element"> {{element.asscno}} </td>
+      </ng-container>
+<!--
+      <ng-container matColumnDef="taxable">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>AMOUNT </th>
+        <td mat-cell *matCellDef="let element">{{getamount(element.taxable)}}</td>
+      </ng-container>-->
+
+      <ng-container matColumnDef="taxable">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>AMOUNT </th>
+        <td mat-cell *matCellDef="let element">{{element.taxable}}</td>
+      </ng-container>
+
+       <ng-container matColumnDef="employee_no">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>EMPLOYEE NO. </th>
+        <td mat-cell *matCellDef="let element">{{element.employee_no}}</td>
+      </ng-container>
+      
+        <ng-container matColumnDef="invoice_type">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>INVOICE TYPE</th>
+        <td mat-cell *matCellDef="let element">{{element.invoice_type}}</td>
+      </ng-container>
+
+     
+        <ng-container matColumnDef="associate_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ASSOCIATE NAME</th>
+        <td mat-cell *matCellDef="let element">{{element.associate_name}}</td>
+      </ng-container>
+
+      
+        <ng-container matColumnDef="total_ctc">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>TOTAL CTC</th>
+        <td mat-cell *matCellDef="let element">{{getamount(element.total_ctc)}}</td>
+      </ng-container>
+      
+      
+<!-- "client_id","client_name","employee_no","invoice_type","associate_name","total_ctc"];-->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="example-element-row"
+        [class.example-expanded-row]="expandedElement === row">
+      </tr>
+
+    </table>
+    <mat-paginator [pageSizeOptions]="[10, 20, 100,1000]" (page)="getNext($event)" showFirstLastButtons></mat-paginator>
+  </div>
+  <div *ngIf="NoRecords" class="consolidated-elseCondition">No Records Found For The Month</div>
+  <div  class="consolidated-spinner">
+      <div *ngIf="showSpinner"class="main-loader">
+          <div class="sk-circle">
+              <div class="sk-circle1 sk-child"></div>
+              <div class="sk-circle2 sk-child"></div>
+              <div class="sk-circle3 sk-child"></div>
+              <div class="sk-circle4 sk-child"></div>
+              <div class="sk-circle5 sk-child"></div>
+              <div class="sk-circle6 sk-child"></div>
+              <div class="sk-circle7 sk-child"></div>
+              <div class="sk-circle8 sk-child"></div>
+              <div class="sk-circle9 sk-child"></div>
+              <div class="sk-circle10 sk-child"></div>
+              <div class="sk-circle11 sk-child"></div>
+              <div class="sk-circle12 sk-child"></div>
+          </div>
+      </div>
+  </div>
+  
+</div>

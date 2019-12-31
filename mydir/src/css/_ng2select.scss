@@ -1,0 +1,74 @@
+
+@import "variables.scss";                  // Import Variables 
+
+
+.ui-select-container
+{
+  &.dropdown 
+  {
+    position: relative;
+  }
+  .form-control 
+  {
+    display: block;
+    background: $table-head-color;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 12px;
+    width:100%;
+    box-sizing: border-box;
+    font-size: $font-size-small;
+    border: solid 1px #e1e4f5;
+    color: $grey-color-light;
+    border-radius: 5px;
+    outline:none;
+    font-family: "Open Sans", sans-serif;
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    &:focus 
+    {
+      outline:none;
+    }
+  }
+}
+
+.dropdown-toggle
+{
+  position: absolute;
+  right: 10px;
+  &:before 
+  {
+    content:"x";
+    font-size: 12px;
+    width: 10px;
+    height: 10px;
+  }
+}
+.open>.dropdown-menu {
+  display: block;
+}
+.dropdown-menu {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+.ui-select-container.dropdown
+{
+  &:focus 
+  {
+    outline:solid thin $secondary-color;
+  }
+}

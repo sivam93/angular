@@ -1,0 +1,28 @@
+[	
+  {
+    "Month *": "Date",
+    "Ecode *": "Numeric",
+    "Assocaite Name *": "Text",
+    "Client Name *": "Text",
+    "Client ID *": "Alphanumeric",
+    "INVOICE NO *": "Alphanumeric",
+    "MONTH *": "Numeric",
+    "YEAR *": "Year(Numeric)",
+    "CLAIMS CREATED BY *": "Alphanumeric",
+    "CLAIMS CREATED DATE *": "Date",
+    "BILL DATE *": "Date",
+    "CLAIMED AMOUNT *": "Numeric",
+    "CLAIMS APPROVED STATUS *": "Text",
+    "APPROVED AMOUNT *": "Numeric",
+    "FINANCE Approved Date *": "Date",
+    "FINANCE STATUS *": "Text",
+    "INVOICE STATUS *": "Text",
+    "MARK UP *": "Numeric",
+    "CGST *": "Numeric",
+    "SGST *": "Numeric",
+    "IGST *": "Numeric",
+    "INVOICE TOTAL *": "Numeric"
+  },
+  "Month *","Ecode *","Assocaite Name *","Client Name *","Client ID *","INVOICE NO *","MONTH *","YEAR *","CLAIMS CREATED BY *","CLAIMS CREATED DATE *","BILL DATE *","CLAIMED AMOUNT *","CLAIMS APPROVED STATUS *","APPROVED AMOUNT *","FINANCE Approved Date *","FINANCE STATUS *","INVOICE STATUS *","MARK UP *","CGST *","SGST *","IGST *","INVOICE TOTAL *"
+  
+]

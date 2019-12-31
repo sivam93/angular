@@ -1,0 +1,242 @@
+<div  class="d-tableHead" [ngClass]="{'show':showTable,'deleting':deleteRow}">
+    <table>
+        <tr [ngClass]="{'show':showTable}">
+            <td>
+                <ng-container *ngIf="manager else anchor_clientid">
+                    <a [routerLink]="'/home/collections/clientdetails/'+tableContent.client_id" class="d-clientid">{{tableContent.client_id}}</a>
+                </ng-container>
+                <ng-template #anchor_clientid>
+                    {{tableContent.client_id}}
+                </ng-template>  
+            </td>
+            <td>
+                {{tableContent.client_name}}
+            </td>
+            <td>
+                {{tableContent.invoice_no}}
+            </td>
+            <td>
+                Rs. {{invoiceAmount}}
+            </td>
+            <td>
+                {{tableContent.invoice_date | date : dateFormat}}
+            </td>
+            <ng-container *ngIf="manager">
+                <td>
+                    <a [routerLink]="'/home/collections/anchordetails/'+tableContent.client_id+'/'+tableContent.client_id"  class="d-assignanchor">Shoba Ganapathy</a>
+                </td>
+                <td>
+                    <app-status
+                        [status]="'paid'"
+                    >
+                    </app-status>
+                </td>
+                <td>
+                    40
+                </td>
+                <td>
+                    <app-actions
+                        [index]="index"
+                        [clientid]="tableContent.client_id"
+                        (action)="openSlide($event)"
+                    >
+                    </app-actions>   
+                </td>
+            </ng-container>
+            <td *ngIf="anchor">
+                <a href="javascript:void(0)" class="d-button" (click)="openSlide(index);">
+                    <span *ngIf="!showTable; else showDone">{{tableButton}}</span>
+                    <ng-template #showDone><span class="icon icon-up"></span></ng-template>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+<table class="d-info" *ngIf="showTable"  [ngClass]="{'d-loader':loader}">
+  <tr>
+      <td class="d-nopadding">
+          <div class="d-info__wrapper" [@slideDownUp]="slideStatus"  [@fadeInOut]="fadeStatus">  
+           <form #form="ngForm" (ngSubmit)="onUntagSubmit(form)">
+                <div class="d-info__block">
+                    <div class="d-input__wrapper">
+                        <div class="d-input">
+                            <app-inputtext
+                                name="payAmount"
+                                [type]="'number'"
+                                class="d-flex d-flex-acenter"
+                                [label]="'Payment Amount : '"
+                                [validation]="{
+                                    required:true,
+                                    message:'Payment Amount is Invalid'
+                                }"
+                                [(inputValue)]="formValues.payment_amount"
+                                (inputValueChange)="onChangePayAmount(formValues.payment_amount)"
+                                [(ngModel)]="formValues.payment_amount"
+                                required >
+                            </app-inputtext> 
+                        </div>
+                        <div class="d-input">
+                            <app-inputtext
+                                name="adjustedAmount"
+                                class="d-flex d-flex-acenter"
+                                [type]="'number'"
+                                [label]="'Adjustment Amount : '"
+                                [validation]="{
+                                    required:true,
+                                    message:'Enter Adjusted Amount'
+                                }"
+                                [(inputValue)]="formValues.adjusted_amount"
+                                [(ngModel)]="formValues.adjusted_amount"
+                                required
+                            >
+                            </app-inputtext> 
+                        </div>
+                        <div class="d-input">
+                            <app-inputtext
+                                name="tds"
+                                class="d-flex d-flex-acenter"
+                                [type]="'select'"
+                                [label]="'TDS ( % ) :'"
+                                [validation]="{
+                                    required:true,
+                                    message:'Select TDS'
+                                }"
+                                [selectValues]='tdslist'
+                                [(inputValue)]="formValues.tds"
+                                [(ngModel)]="formValues.tds"
+                                required
+                                (ngModelChange)="calculateTds(formValues.tds)"
+                            >
+                            </app-inputtext>
+                        </div>
+                        <div class="d-input">
+                            <app-inputtext
+                                name="tdsAmount"
+                                class="d-flex d-flex-acenter"
+                                [type]="'number'"
+                                [label]="'TDS Amount :'"
+                                [validation]="{
+                                    required:true,
+                                    message:'Enter TDS Amount'
+                                }"
+                                [(inputValue)]="formValues.tdsAmount"
+                                [(ngModel)]="formValues.tdsAmount"
+                                required
+                            >
+                            </app-inputtext> 
+                        </div>
+                        <div class="d-input">
+                            <app-inputtext
+                                name="utrNumber"
+                                class="d-flex d-flex-acenter"
+                                [type]="'text'"
+                                [label]="'UTR Number :'"
+                                [validation]="{
+                                    required:true,
+                                    message:'Enter UTR Number'
+                                }"
+                                [(inputValue)]="formValues.utrNumber"
+                                [(ngModel)]="formValues.utrNumber"
+                                required
+                            >
+                            </app-inputtext> 
+                        </div>
+                        <div class="d-input">
+                            <div class="d-input__text">
+                                Payment Date :
+                            </div>
+                            <div class="d-input__block">
+                                    <dp-date-picker
+                                        theme="dp-material"
+                                        mode="daytime" 
+                                        name="paymentDate" 
+                                        [(ngModel)]="selectedDate" 
+                                        required
+                                        [class.field-error-datepicker]="REF_selectedDate.invalid"
+                                        #REF_selectedDate="ngModel"
+                                        #datePicker
+                                        [config]="datePickerConfig"
+                                        (onChange)="onOpen()"
+                                    ></dp-date-picker>
+                                    <span (click)="close()" *ngIf="calClose" class="close_date">OK</span>
+                                    <span [ngClass]="REF_selectedDate.invalid ? 'error':'success'">Select Date</span>
+                            </div>
+                        </div>
+                        <div class="d-input">
+                            <app-inputtext
+                                name="modeOfPayment"
+                                class="d-flex d-flex-acenter"
+                                [type]="'select'"
+                                [label]="'Mode Of Payment :'"
+                                [validation]="{
+                                    required:true,
+                                    message:'Select Mode Of Payment'
+                                }"
+                                [selectValues]='modeOfPayment'
+                                [(inputValue)]="formValues.modeOfPayment"
+                                [(ngModel)]="formValues.modeOfPayment"
+                                required
+                            >
+                            </app-inputtext>
+                        </div>
+                        <div class="d-input" [ngClass]="{'disabled':status}">
+                            <app-inputtext
+                                name="balance"
+                                class="d-flex d-flex-acenter"
+                                [type]="'number'"
+                                [label]="'Balance :'"
+                                [(inputValue)]="formValues.balance"
+                                [disabled]="status"
+                                [(ngModel)]="formValues.balance"
+                                required
+                            >
+                            </app-inputtext>
+                        </div>
+                        <div class="d-input" [ngClass]="{'disabled':status}">
+                            <app-inputtext
+                                name="totalAmount"
+                                class="d-flex d-flex-acenter"
+                                [type]="'number'"
+                                [label]="'Total Amount :'"
+                                [(inputValue)]="formValues.totalAmount"
+                                [disabled]="status"
+                                [(ngModel)]="formValues.totalAmount"
+                                required
+                            >
+                            </app-inputtext>
+                        </div>
+                    </div>
+                    <div class="d-input__wrapper d-marginTop">
+                        <div class="d-input width-auto">
+                            <app-inputtext
+                                name="remarks"
+                                class="d-flex d-flex-acenter"
+                                [type]="'textarea'"
+                                [label]="'Remarks :'"
+                                [(inputValue)]="formValues.remarks"
+                                [(ngModel)]="formValues.remarks"
+                            >
+                            </app-inputtext>
+                        </div>
+                        <div class="d-input d-input__button">
+                            <button class="d-button" [disabled]="!form.valid">
+                                <span *ngIf="!loader else showSpinner">{{btnText}}</span>
+                                    <ng-template #showSpinner>
+                                        <div class="spinner" [ngClass]="{'show':loader}">
+                                            <div class="rect1"></div>
+                                            <div class="rect2"></div>
+                                            <div class="rect3"></div>
+                                            <div class="rect4"></div>
+                                            <div class="rect5"></div>
+                                        </div>
+                                    </ng-template>
+                            </button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </form>
+        </div> 
+      </td>
+  </tr>
+</table>

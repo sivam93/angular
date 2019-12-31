@@ -1,0 +1,97 @@
+@import "/../../../../../css/variables";
+.info-rightdiv{
+
+  width: 575px;
+  height: 76px;
+  box-shadow: 0 2px 10px 0 rgba(194, 215, 240, 0.15);
+  background-color: #ffffff;
+}
+.info-downrightdiv{
+  >h1{
+    margin-top: 8px;
+    margin-left:21px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #353f84;
+   
+  }
+  width: 575px;
+  height: 230px;
+  box-shadow: 0 2px 10px 0 rgba(194, 215, 240, 0.15);
+  background-color: #ffffff;
+}
+.info-leftdiv{ 
+    width: 575px;
+    height: 70px;
+    box-shadow: 0 2px 10px 0 rgba(194, 215, 240, 0.15);
+    background-color: #ffffff;
+  }
+
+  .recon{
+    &_indent{
+     
+      margin-left:23px;
+    }
+    &_recv{
+      float:left;
+      margin-left: 10px;
+      margin-top:15px;
+
+    }
+    &_outs{
+      float:left;
+      margin-left: 59px;
+      margin-top:15px;   
+    }
+    &_leftpdc{
+      float:left;
+      margin-left: 54px;
+      margin-top:15px;
+    }
+    &_pdc
+    { 
+      float:left;
+      margin-left: 9px;
+      margin-top:15px;
+    }
+
+    &_amount{
+        font-size: 22px;
+        font-weight: bold;
+        color:$heading-color-secondary ;
+        padding: 3px 0px 0px 47px;
+    }
+    &_subtext{
+        font-size: 12px;
+        font-weight: normal;
+        color:$primary-text-color;
+        padding: 1px 0px 0px 47px;
+    }
+    &_line{
+        float:left;
+        margin-left: 209px;
+        margin-top:-42px;
+        height: 44px;
+        border: solid 1px #e4ebf5;
+        background-color:#e4ebf5 ;
+        border-radius: 25%;
+    }
+    &_horizontalline{
+      margin-top: 11px;
+      width: 540px;
+      margin-left: 10px;
+      border: 1px solid #eff3fa
+    }
+    &_image{
+      float: left;
+      width: 40px;
+      height: 40px;
+      background-color: #e5f3fc;
+      border-radius: 50%;
+      text-align: center;
+      display: block;
+      >img{
+        margin-top:11px;
+      }
+    }
+  }

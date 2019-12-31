@@ -1,0 +1,51 @@
+
+<app-navigation
+[MothSelector]="true"
+(reports)="reports($event)"
+(download)="onClickDownload($event)"
+(selectedMonths)="selectedMonth($event)"
+selectType="consolidated"
+></app-navigation>  
+<div *ngIf="talbleready" class="consolidated-label"> 
+    
+<select  label='Select Report' (change)="onChange($event)">
+    <option value=10>10</option>
+    <option value=20>20</option>
+    <option value=50>50</option>
+    <option value=100>100</option>
+  </select>
+  Entries
+</div>
+<div *ngIf="talbleready" class="consolidated-wrapper">
+    <div *ngIf="talbleready">
+    <table>
+
+                    <tr>
+                        <th>CLIENT ID</th>
+                        <th>CLIENT NAME</th>
+                        <th>MANDATE TYPE</th>
+                        <th>CORP NAME</th>
+                        <th>CORP ID</th>                        
+                        <th>CLIENT STATUS</th>
+                        <th>INVOICE NO.</th>
+                        <th>ASSOCIATE COUNT</th>
+                        <th>AMOUNT </th>     
+                    </tr>
+                    <tr *ngFor="let bird of arrbirds3|paginate: { itemsPerPage: value, currentPage: p }">
+                        <td>{{bird.client_id}}</td>
+                        <td>{{bird.client_name}}</td>
+                        <td>{{bird.mandate_type}}</td>
+                        <td>{{bird.corp_name}}</td>
+                        <td>{{bird.corp_id}}</td>
+                        <td [ngStyle]="{'color': getRowColor(bird.client_status)}">{{bird.client_status}}</td>
+                        <td>{{bird.invoiceno}}</td>
+                        <td>{{bird.asscno}}</td>
+                        <td>{{bird.taxable}}</td>
+                    </tr>
+            </table>
+            <div class="my-pagination ">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    <div *ngIf="NoRecords"class="consolidated-elseCondition">No Records Found For The Month</div>
+</div>

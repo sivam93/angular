@@ -1,0 +1,53 @@
+<div class="d-chart__block" *ngIf="loaded">
+
+    <div class="d-chart__content" >
+      <table>
+        <tr *ngIf="loadHeading">
+          <th>
+            {{this.loadData}}
+          </th>
+          <th>
+            <span class="count" [ngStyle]="{'paddingLeft' : (flexWidth == 0) ? '10px': '50px'}" *ngIf="totalcount !== null && totalcount >= 0">
+              {{totalcount}}
+            </span>
+          </th>
+        </tr>
+        <tr *ngFor="let d of data">
+          <td>
+            <span class="color color{{d.color}}"></span> 
+            <ng-container>{{d.key}} </ng-container>
+            <ng-container *ngIf="!notaligned"><strong>( 80/40L )</strong></ng-container>
+          </td>
+          <td *ngIf="notaligned">
+           <span  [ngStyle]="{'paddingLeft' : (flexWidth == 0) ? '10px': '50px'}" class="count"  *ngIf="d.value !== 'undefined'">
+            {{d.value}}
+           </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+      <div class="d-chart__graph" >
+        <ng-container *ngIf="chartLoaded else loader">
+            <ng-container *ngIf="totalcount > 0 else nodata">
+              <canvas baseChart 
+                width="230"
+                height="120px"
+                [data]="doughnutChartData"
+                [labels]="doughnutChartLabels"
+                [chartType]="doughnutChartType"
+                [legend]="false"
+                [options]="chartOptions"
+                [colors]="donutColors"
+                (chartClick)="chartClicked($event)"
+                >
+              </canvas>
+            </ng-container>
+        </ng-container>
+      </div>
+  </div>
+<ng-template #loader>
+  <div class="lds-loader"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+</ng-template>
+<ng-template #nodata> 
+  <div class="d-textcenter d-nopiechart">No Chart Data</div>
+</ng-template>

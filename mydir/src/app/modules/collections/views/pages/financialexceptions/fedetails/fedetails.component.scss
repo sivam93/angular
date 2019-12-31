@@ -1,0 +1,37 @@
+@import "../../../../../../../css/variables";                  // Import Variables 
+
+$count-color: #ff6b6b;
+
+.showNumber
+{
+    display: inline-block;
+    width:30px;
+    height: 20px;
+    background:$count-color;
+    line-height: 20px;
+    text-align: center;
+    font-size:12px;
+    color:$white-color;
+    border-radius: 3px;
+    margin-left: 10px;   
+    font-weight: 600;
+    &:hover 
+    {
+        background:darken($count-color,5%);
+    }
+}
+
+.d-info__block
+{
+    margin-bottom: 10px;
+    &.multiple,&.single 
+    {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    &:last-child 
+    {
+        margin-bottom: 0;
+    }
+}
+

@@ -1,0 +1,66 @@
+<div class="d-tabs__content d-marginBottom" *ngIf="!(loading$ | async) else showloader">
+    <div class="d-search">
+        <div class="d-search__select">
+            <span>{{feCat}}</span>
+            <select name="fecat" id="fecat" [(ngModel)]="feCat" [title]="feCat">
+                <option value="All">All</option>
+                <option value="Multiple">Multiple</option>
+                <option value="TDS Mismatch">TDS Mismatch</option>
+                <option value="Zero net pay">Zero net pay</option>
+                <option value="Adhoc Due">Adhoc Due</option>
+                <option value="Credit Not Reflecting">Credit Not Reflecting</option>
+                <option value="Previous Due">Previous Due</option>
+                <option value="Agreement Expired">Agreement Expired</option>
+                <option value="Future Date PDC">Future Date PDC</option>
+                <option value="Advance Pool">Advance Pool</option>
+                <option value="Short Pay">Short Pay</option>
+            </select> 
+        </div>
+        <input type="search" [(ngModel)]="searchText" placeholder="Enter Client ID or Invoice Number">
+    </div>
+    <div class="d-tabs__contenttable" *ngIf="(tableContent$ | async | searchInvoices : searchText | searchExceptions : feCat  )?.length > 0 else noData">
+        <table>
+            <tr>
+                <th [attr.colspan]="tableHeaders.length" class="d-tabs__head">
+                    <app-tableheader
+                        [headerContent]="tableHeaders"
+                        [module]="'fe'"
+                    >
+                    </app-tableheader>
+                </th>
+            </tr>
+            <tr *ngFor="let content of tableContent$ | async | searchInvoices : searchText  | searchExceptions : feCat | paginate: { itemsPerPage: 10, currentPage: p }; let i = index;">
+                <td colspan="9">
+                    <app-fedetails   
+                        [tableContent]="content" 
+                        [tableButton]="tableButton" 
+                        [index]="i"   
+                        (collapse)="collapseall($event)"
+                        [active]="active"
+                    >
+                    </app-fedetails>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="d-pagination d-marginTop" *ngIf="(tableContent$ | async | searchInvoices : searchText | searchExceptions : feCat )?.length > 0">
+        <div class="d-spacer"></div>
+        <pagination-controls class="d-pagination__block"
+            (pageChange)="p = $event"
+            responsive="true"
+            previousLabel=""
+            nextLabel=""
+        >
+        </pagination-controls>
+    </div>
+</div>
+
+
+
+<ng-template #showloader>
+    <div>Please wait, Financial Exceptions Datas are Loading.....</div>
+</ng-template>
+
+<ng-template #noData>
+    <div>No Data Found</div>
+</ng-template>

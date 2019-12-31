@@ -1,0 +1,37 @@
+<div class="d-tableHead">
+    <table>
+        <tr>
+            <td>
+                {{tableContent.client_id}}
+            </td>
+            <td>
+                {{tableContent.client_name}}
+            </td>
+            <td>
+                {{tableContent.invoice_no}}
+            </td>
+            <td>
+            Rs. {{invoiceAmount}}
+            </td>
+            <td>
+            {{tableContent.invoice_type}}
+            </td>
+            <td>
+                {{tableContent.invoice_date | date : dateFormat}}
+            </td>
+            <td class="d-textcenter">
+                {{tableContent.Associatecount}}
+            </td>
+            <td>
+                {{tableContent.modeof_payment}}
+            </td>
+            <td ngClass="status-width">
+                <a href="javascript:void(0)" class="d-button" [ngClass]="tableContent.status == '1' ? 'approved':'pending'">
+                    <span *ngIf="tableContent.status == '1'; else showOther">Approved but not yet released</span>
+                    <ng-template #showOther>Approval Pending</ng-template>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+ 

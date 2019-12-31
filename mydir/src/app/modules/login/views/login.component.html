@@ -1,0 +1,48 @@
+<div class="d-login">
+    <div class="d-loginlogo">
+      <a href="" class="">
+        <img src="assets/tl-logo-login.png" alt="">
+      </a>
+    </div>
+    <form #form="ngForm" (ngSubmit)="login(form)" autocomplete="off">
+      <div class="d-form">
+        <div class="d-formgroup">
+          <input 
+            name="username"
+            type="text" 
+            placeholder="Username" 
+            [(ngModel)]="formValues.Username"
+            #username="ngModel"
+            required
+          >
+          <span class="error" [ngClass]="username.valid && username.touched ? '' : 'show'">* Username is required</span>
+        </div>
+        <div class="d-formgroup">
+          <input 
+            name="password"
+            type="password" 
+            placeholder="Password" 
+            [(ngModel)]="formValues.Password"
+            #password="ngModel"
+            required
+          >
+          <span class="error" [ngClass]="password.valid && password.touched ? '' : 'show'">* Password is required</span>
+        </div>
+        <div class="d-formgroup d-formbutton">
+            <button [disabled]="!form.valid">
+              <span *ngIf="!loginStatus else load">{{loginText}}</span>
+            </button>
+            <span class="error" [ngClass]="showError ? 'show' : ''" *ngIf="showError">{{errorText}}</span>
+          </div>
+      </div>
+    </form>
+</div>
+
+
+<ng-template #load>
+    <div class="login-spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+</ng-template>

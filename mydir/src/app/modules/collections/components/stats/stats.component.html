@@ -1,0 +1,14 @@
+<div class="d-assets__block" *ngFor="let stat of statData">
+  <span class="icon icon-{{stat.icon}}"></span>
+  <div class="d-assets__details">
+    <h3 *ngIf="module == 'totalcollections'">
+      {{stat.value | moneyconverter}}
+    </h3>
+    <h3 *ngIf="module == 'totalclients'">
+      {{stat.value}}
+    </h3>
+    <p>
+      {{stat.text}}
+    </p>
+  </div>
+</div>

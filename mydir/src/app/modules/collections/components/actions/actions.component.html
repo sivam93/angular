@@ -1,0 +1,20 @@
+<div class="d-action" [ngClass]="{'active':menuOpen}">
+    <div class="d-action__button" [ngClass]="{'show':active}" (click)="openAction($event)">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="d-action__block">
+            <ul>
+                <li *ngFor="let nav of navLinks;let i = index;">
+                  <a 
+                   [routerLink]="nav.link"
+                   (click)="selectNav(nav.text,i)"  
+                   [ngClass]="{'active':(i === navActive)}"
+                  >
+                  {{nav.text}}
+                  </a>
+                </li>
+            </ul>
+        </div>
+</div>

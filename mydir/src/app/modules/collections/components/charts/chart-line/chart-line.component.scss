@@ -1,0 +1,31 @@
+
+@import "../../../../../../css/variables";                  // Import Variables 
+.d-linechart
+{
+    margin-top: 10px;
+    &__title
+    {
+        text-align: right;
+        padding: 10px 0;
+        color:$grey-color-light;
+        font-size: $font-size-small - 1;
+        &block 
+        {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+            span 
+            {
+                display: inline-block;
+                vertical-align: middle;
+                &.color
+                {
+                    width:9px;
+                    height: 9px;
+                    border-radius: 50%;
+                    margin:0 5px;
+                }
+            }
+        }
+    }
+}

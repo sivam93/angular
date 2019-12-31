@@ -1,0 +1,10 @@
+<div class="d-tabs">
+  <div 
+    class="d-tabs__block" 
+    *ngFor="let item of items" 
+    [ngClass]="{'active':item === activeItem}"
+    (click)="onSelect(item)"
+  >
+    {{item}}
+  </div>
+</div>

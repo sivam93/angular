@@ -1,0 +1,105 @@
+
+dp-day-calendar .dp-day-calendar-container
+{
+    padding:10px;
+}
+dp-day-time-calendar dp-time-select
+{
+    border:none !important;
+}
+dp-calendar-nav .dp-nav-header-btn {
+cursor: pointer;
+background: transparent;
+line-height: 30px;
+height: 30px !important;
+color: #353f84;
+width: auto !important;
+border: none;
+font-size: 16px;
+border: solid thin;
+    &:hover 
+    {
+        background: #dcdcdc;
+    }
+}
+dp-calendar-nav .dp-calendar-nav-container
+{
+    height: 50px !important;
+    border:none !important;
+}
+dp-day-calendar .dp-calendar-weekday
+{
+    width:40px !important;
+    height: 30px !important;
+    line-height: 30px !important;
+    // background: #353f84;
+    color: #ffffff;
+    border-left:none !important;
+    border-bottom:none !important;
+}
+dp-day-calendar .dp-calendar-day
+{
+    width:40px !important;
+    height: 40px !important;
+}
+dp-day-calendar .dp-calendar-day,
+dp-month-calendar .dp-calendar-month
+{
+    border:none;
+    background: rgba(#353f84,0.3);
+    color:#000000;
+    border:solid thin rgba(53,63,132,0.08);
+    &:hover 
+    {
+        background: rgba(#353f84,0.6);
+    }
+}
+
+dp-day-calendar .dp-weekdays
+{
+    margin-bottom: 0 !important;
+}
+dp-day-calendar .dp-selected
+{
+    background: rgba(#353f84,1) !important; 
+}
+dp-day-calendar .dp-calendar-wrapper
+{
+    border:solid thin rgba(#000000,0.2) !important;
+}
+dp-month-calendar .dp-month-calendar-container {
+    padding: 10px !important;
+}
+dp-calendar-nav .dp-calendar-nav-left, 
+dp-calendar-nav .dp-calendar-nav-right, 
+dp-calendar-nav .dp-calendar-secondary-nav-left, 
+dp-calendar-nav .dp-calendar-secondary-nav-right,
+dp-time-select .dp-time-select-control-down, 
+dp-time-select .dp-time-select-control-up
+{
+    width:24px !important;
+    height: 24px;
+    border: none;
+    margin: 0 3px;
+    background: #e2e0ed;
+    &:hover 
+    {
+        background: darken(#e2e0ed,10%);
+    }
+}
+dp-calendar-nav .dp-current-location-btn
+{
+    display: none;
+}
+dp-calendar-nav .dp-calendar-nav-left::before, 
+dp-calendar-nav .dp-calendar-nav-right::before,
+dp-time-select .dp-time-select-control-up::before,
+dp-time-select .dp-time-select-control-down::before
+{
+    width:6px !important;
+    height: 6px !important;
+}
+dp-time-select .dp-time-select-controls
+{
+    padding-bottom: 10px !important;   
+}

@@ -1,0 +1,52 @@
+
+<div class="d-scroll">
+  <button  *ngIf="MothSelector" (click)="sample()">Download</button>
+  <span *ngIf="MothSelector">Select Month</span>
+  <div  *ngIf="MothSelector">
+
+    <div  class="d-filter d-additional">
+        <select name="month" id="monthselect" [(ngModel)]="r2rcycle.month" (ngModelChange)="selectMonth(r2rcycle.month)">
+            <option *ngFor="let month of months" [value]="month.value"  [disabled]="month.value==-1">
+              {{month.name}}</option>
+          </select>     
+    </div>
+ <!--   <span [ngClass]="{error: r2rcycle.error}">
+      {{month.name}}
+    </span>>
+    <select name="month" id="" [(ngModel)]="r2rcycle.month" (ngModelChange)="selectMonth(r2rcycle.month)">
+      <option *ngFor="let month of months" [value]="month.value" [selected]="month.value == -1" [disabled]="month.value==-1">
+        {{month.name}}</option>
+    </select>-->
+  </div>
+  <span [ngClass]="{'d-span': MothSelector==false}">Filter</span>
+  <div [ngSwitch]="selectType"class="d-filter" [ngClass]="{'d-span': MothSelector==false}">
+
+    <select *ngSwitchCase="'download'"id="sample" label='Select Report' (change)="onChange($event)">
+      <option value="" disabled selected="selected">&nbsp;Select  Type</option>
+      <option value="Invoice Offline">&nbsp;&nbsp;Invoice Offline  </option>
+      <option value="Associate Release Offline">&nbsp;&nbsp;Associate Release Offline </option>
+      <option value="Salary Offline">&nbsp;&nbsp;Salary Offline</option>
+      <option value="Reimbursement Offline">&nbsp;&nbsp;Reimbursement Offline </option>
+      <option value="AccPac Offline">&nbsp;&nbsp;AccPac Offline</option>
+    </select>
+    <select *ngSwitchCase="'consolidated'" class="d-additional" id="sample" label='Select Report' (change)="onChange($event)">
+        <option value="" disabled selected="selected">&nbsp;Select Type</option>
+        <option value="Consolidated Invoice Registers">&nbsp;&nbsp;Invoice Registers</option>
+        <option value="Associate Invoice Registers">&nbsp;&nbsp;Associate Invoice Registers </option>
+        <option value="Associate Release Registers">&nbsp;&nbsp;Associate Release Registers </option>
+        <option value="Final Pay Register">&nbsp;&nbsp;Final Pay Register</option>
+      </select>
+      <select *ngSwitchCase="'comparison'" class="d-additional" id="sample" label='Select Report' (change)="onChange($event)">
+        <option value="" disabled selected="selected">&nbsp;Select Type</option>
+        <option value="Associate Wise Release Data">&nbsp;&nbsp;Associate Wise Release Data </option>
+        <option value="Associate Wise Invoice Data">&nbsp;&nbsp;Associate Wise Invoice Data </option>
+        <option value="Final Pay Register">&nbsp;&nbsp;Final Pay Register</option>
+      </select>
+      <select *ngSwitchCase="'finalout'" class="d-additional" id="sample" label='Select Report' (change)="onChange($event)">
+        <option value="" disabled selected="selected">&nbsp;Select Type</option>
+        <option value="Associate Wise Release Data">&nbsp;&nbsp;Associate Wise Release Data </option>
+        <option value="Associate Wise Invoice Data">&nbsp;&nbsp;Associate Wise Invoice Data </option>
+        <option value="Final Pay Register">&nbsp;&nbsp;Final Pay Register</option>
+      </select>
+  </div>
+</div>

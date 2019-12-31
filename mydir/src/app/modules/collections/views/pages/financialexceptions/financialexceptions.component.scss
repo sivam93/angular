@@ -1,0 +1,213 @@
+@import "../../../../../../css/variables";                  // Import Variables 
+
+$heading-color : #5a667e;
+$button-color2 : #34689d;
+$inner-table-head: #eff4f9;
+$select-color :#eeeff6;
+
+.d-search 
+{
+    
+    &__select 
+    {
+        display: inline-block;
+        span
+        {
+            display: block;
+            position: absolute;
+            left:0;
+            right:0;
+            top:1px;
+            width:100px;
+            height: 38px;
+            line-height: 38px;
+            padding:0 10px;
+            border:solid thin $table-border-color; 
+            background: $select-color url(../../../../../../assets/icon-arrowdown-1.svg) no-repeat 90% center;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            padding-right: 30px;
+        }
+        select 
+        {
+            width:142px;
+            opacity: 0;
+            line-height: 40px;
+            height: 40px;
+        }
+        + input[type="search"]
+        {
+            display: inline-block;
+            width:80px;
+            vertical-align: middle;
+        }
+    }
+}
+
+.d-info__exceptions 
+{
+    &-block 
+    {
+        position: relative;
+        font-size: $font-size-large;
+        color:$heading-color;
+        a.view-exception 
+        {
+            position: absolute;
+            right:0;
+            top:2px;
+            color:$tab-color-active;
+            font-size:$font-size;
+            &:hover 
+            {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+    }
+    &-wrapper
+    {
+        padding: 0 0 10px;
+        .d-input
+        {
+            margin-bottom: 10px;
+            flex: calc(25% - 6px) 0 1;
+            padding:0 3px;
+            &__text 
+            {
+                text-align: left;
+                width:auto;
+            }
+            &__wrapper 
+            {
+                justify-content: flex-start;
+                &.line 
+                {
+                    border-bottom:solid 2px $table-info-border;
+                }
+            }
+            &__select 
+            {
+                width:150px;
+                span 
+                {
+                    padding-right: 18px;
+                }
+                .tds_slabs
+                {
+                    position: absolute;
+                    bottom: -25px;
+                    left:0;
+                    right: 0;
+                    text-align: center;
+                    a 
+                    {
+                        color:$tab-color-active;
+                        font-size:$font-size-small;
+                        &:hover 
+                        {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+            &__button 
+            {
+                margin-top: 30px;
+            }
+            &.width-auto 
+            {
+                flex:1;
+                .d-input__select
+                {
+                    width:auto;
+                    span 
+                    {
+                        padding-right: 50px;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+.d-button 
+{
+    &__anchor
+    {
+        background: none !important; 
+        border:solid thin transparent  !important;
+        color:$heading-color-primary !important;
+        font-weight:normal;
+        &:hover 
+        {
+            border:solid thin $heading-color-primary !important;
+        }
+    }
+    &__update 
+    {
+        background: none !important;
+        color:$button-color2 !important;
+        &:hover 
+        {
+            color:darken($button-color2,10%) !important;
+        }
+    }
+}
+.tds-other
+{
+    position: absolute;
+    bottom: -50px;
+    display: none;
+    &.show 
+    {
+        display: block;
+    }
+}
+
+
+.inner-table
+{
+    .d-input__text
+    {
+        color:$heading-color;
+        font-weight: normal;
+        font-size:$font-size-large;
+    }
+}
+
+.d-inner
+{
+    &__table 
+    {
+        table
+        {
+            tr 
+            {
+                th 
+                {
+                    text-transform: capitalize;
+                    background: $inner-table-head;
+                    height: 42px;
+                }
+                td 
+                {
+                    padding-top: 10px !important;
+                    padding-bottom: 10px !important;
+                }
+                th,td  
+                {
+                    &:first-child
+                    {
+                        padding-left : 20px !important;
+                    }
+                }
+            }
+        }
+    }
+}
+.no-flex
+{
+    flex:inherit !important;
+}

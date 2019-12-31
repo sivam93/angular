@@ -1,0 +1,131 @@
+@import "../../../css/_variables.scss";                  // Import Variables 
+.d-tabs 
+{
+    &__list 
+    {
+        position: relative;
+        &:after 
+        {
+            content:"";
+            position: absolute;
+            left:0;
+            right:0;
+            height: 2px;
+            bottom: 0;
+            background: $table-border-color;
+            z-index: -1;
+        }
+        ul 
+        {
+            li 
+            {
+                display: inline-block;
+                a 
+                {
+                    font-size: $font-size;
+                    padding:10px 0 20px;
+                    border-bottom:solid 4px transparent;
+                    color:$tab-color;
+                    text-decoration: none;
+                    display: block;
+                    margin-right: 30px;
+                    font-weight: 600;
+                    transition: all ease-in 0.2s;
+                    &.active 
+                    {
+                        color:$tab-color-active;
+                        border-bottom-color: $tab-color-active;
+                    }
+                    &:hover 
+                    {
+                        color:$tab-color-active;
+                    }
+                }
+                &:last-child
+                {
+                    a 
+                    {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+    &-date{
+        margin:auto;
+        float:left;
+
+    }
+    &-month{
+        float:left;
+    }
+}
+.d-scroll{
+    
+    display: flex;
+    align-items: center;
+    height: 35px;
+    line-height: 35px;
+    font-size: 12px;
+    margin-left: 338px;
+    > span 
+    {
+        display: inline-block;
+        margin-right: 10px;
+    }
+    &__select 
+    {
+            position: relative;
+            display: inline-block;
+            margin-right: 10px;
+        span 
+        {
+            position: absolute;
+            border:solid 1px $border-color-1;
+            width:118px;
+            padding:0 10px;
+            right:0;
+            background: $white-color url(src/assets/icon-arrowdown-1.svg) no-repeat 90% center;
+            box-shadow: 0 2px 4px 0 #e9effd;
+            color:$secondary-color;
+            &.error 
+            {
+                border:solid thin #ff0000;
+            }
+        }
+        select 
+        {
+            opacity: 0;
+            width:140px;
+            line-height: 37px;
+            height: 37px;
+        }
+        &:last-child 
+        {
+            margin-right: 0;
+        }
+    }
+}
+
+.d-filter{
+   
+    select{
+        position: relative;
+        display: inline-block;
+        margin-right: 10px;
+        border:solid 1px $border-color-1;
+        background: $white-color url(src/assets/icon-arrowdown-1.svg) no-repeat 90% center;
+        box-shadow: 0 2px 4px 0 #e9effd;
+        color:$secondary-color;
+        width:140px;
+        line-height: 37px;
+        height: 37px;
+        -webkit-appearance: none;
+        
+    }
+    select::-ms-expand {display: none; }
+   
+}
+.sample{
+   float:left
+}

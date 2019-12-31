@@ -1,0 +1,93 @@
+<app-heading [heading]="heading" [backButton]="false" [pdcCycle]="false" [escalation]="false"></app-heading>
+
+<div>
+
+  <div class="d-assets d-marginBottom">
+
+
+    <div class="info-rightdiv">
+      <div class="recon_pdc">
+        <div class="recon_image"><img src="assets/icon-amount.svg"></div>
+
+        <div class="recon_amount">
+          2.00cr
+        </div>
+
+        <div class="recon_subtext">
+          TotalCollection for PDC
+        </div>
+        <div class="recon_line"></div>
+      </div>
+      <div class="recon_recv">
+        <div class="recon_image"><img src="assets/icon-recvd.svg"></div>
+        <div class="recon_amount">
+          1.50cr
+        </div>
+        <div class="recon_subtext">
+          Recieved
+        </div>
+      </div>
+      <div class="recon_outs">
+        <div class="recon_image"><img src="assets/icon-outstandings.svg"></div>
+        <div class="recon_amount">
+          0.50cr
+        </div>
+        <div class="recon_subtext">
+          Outstanding
+        </div>
+      </div>
+    </div>
+
+    <div class="info-leftdiv">
+      <div class="recon_leftpdc">
+        <div class="recon_image"><img src="assets/icon-total-clients.svg"></div>
+
+        <div class="recon_amount">
+          200
+        </div>
+
+        <div class="recon_subtext">
+          Total Clients
+        </div>
+        <div class="recon_line"></div>
+      </div>
+      <div class="recon_outs">
+        <div class="recon_image"><img src="assets/icon-total-associates.svg"></div>
+        <div class="recon_amount">
+          300
+        </div>
+        <div class="recon_subtext">
+          Total Associates
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div>
+    <div class="d-assets d-marginBottom">
+      <div class="info-downrightdiv">
+        <h1>Pending Report</h1>
+        <div class="recon_horizontalline"></div>
+        <div class="recon_indent">
+          <app-chart-pie [loaded]='chartLoaded' [loadData]="'Reconcilation Pending'">
+          </app-chart-pie>
+        </div>
+      </div>
+      <div class="info-downrightdiv">
+        <h1>Exceptions</h1>
+        <div class="recon_horizontalline"></div>
+        <div class="recon_indent">
+          <app-chart-pie [loaded]='chartLoaded' [loadData]="'Reconcilation Pending'">
+          </app-chart-pie>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="d-tabs">
+        <app-nav-tabs [heading]="heading">
+        </app-nav-tabs>
+        <div class="d-tab__views">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>

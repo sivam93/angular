@@ -1,0 +1,70 @@
+<!-- <div class="rectangle">
+    <div class="heading" >
+        Download the Report Template
+    </div>
+    <div class="rectangle Uploads">
+        Host_report_Template_2019.zip
+    </div >
+</div> -->
+<app-navigation (reports)="reports($event)"
+[MothSelector] ="false"
+selectType="download"
+></app-navigation>
+
+<ngx-spinner
+bdColor="rgba(51,51,30,0.4)"
+size="large"
+color="#353f84"
+type="ball-clip-rotate"
+></ngx-spinner>
+<div class="upload-wrapper">
+    <div class="upload-box">
+        <div class="upload-heading">    
+            <div>
+                <h2>
+                    Download the Report Template
+                    <img  (click)="info()" class="upload-image" src="assets/icon-tooltip.svg">
+                </h2>
+            </div>
+            <div class="upload-file">
+                <span class="upload-fileimage"><img src="assets/icon-plan.png"></span>
+                <span class="upload-fileName">
+                    <h3>
+                        {{reportName}} Report Template
+                    </h3>
+                </span>
+                <span class="upload-downloadimage">
+                    <img (click)="download()" src="assets/icon-cloud-computing.svg">
+                </span>
+            </div>
+        </div>
+        <div class="upload-body">
+            <div class="upload-title">
+                <h1>
+                    Upload Data
+                </h1>
+            </div>
+            <div class="upload-container">
+                <div class="upload-path2">
+                    <img class="upload-uploadimage" src="assets/icon-file-2.svg">
+                </div>
+                <input type="file" #file  accept=".csv" style="display: none"   (change)="onFilesAdded($event)" />
+                <button class="upload-button" (click)="addFiles()">Upload</button>
+                <span class="upload-filenameattached" >{{this.filename}}</span>
+            </div>
+          <!--  <div class="d-align" *ngIf="fileuploader.uploadbar">
+                <div class="d-progressbar"  >
+                    <span [ngStyle]={width:fileuploader.percentage}>{{this.filename}}</span>
+                </div>
+                <span class="d-progressbar__status">{{fileuploader.status}}</span>
+               
+            </div>-->
+            <div class="upload-submit">
+            <button [disabled]="!submitEnable" (click)="upload(); showSpinner()">
+                Submit
+            </button>
+            </div>
+
+        </div>
+    </div>
+</div>

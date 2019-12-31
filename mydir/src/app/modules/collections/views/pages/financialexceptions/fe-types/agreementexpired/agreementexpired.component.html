@@ -1,0 +1,135 @@
+<div class="d-info__exceptions-block" [ngClass]="{'deleteRow':deleteRow}"> 
+    {{exception}} 
+    <ng-container *ngIf="!single">
+        <a class="view-exception"
+        href="javascript:void(0)"
+        (click)="showException = !showException" 
+        >
+            <span *ngIf="!showException; else showDone">View</span>
+            <ng-template #showDone>Close</ng-template>
+        </a>
+    </ng-container>
+    <div *ngIf="showException" class="d-info__exceptions-wrapper">
+        <app-fe-excinfo
+            [data]="commonData"
+        >
+        </app-fe-excinfo>
+        <div class="d-input__wrapper inner-table d-marginTop">
+            <div class="d-input width-auto no-flex">
+                <div class="d-input__text">
+                    Agreement Type:  {{exceptionInfo.AgreementType}}
+                </div>
+            </div>
+            <div class="d-input width-auto no-flex">
+                <div class="d-input__text">
+                    Agreement Expired Date: {{exceptionInfo.AgreementExpiredDate}}
+                </div>
+            </div>
+        </div>
+        
+       
+        <div class="d-input__wrapper d-marginTop">
+            <div class="d-input width-auto">
+                <div class="d-input__text">
+                    Remarks
+                </div>
+                <div class="d-input__block">
+                    <div class="d-input__textarea">
+                        <textarea
+                            name="remarks" 
+                            [(ngModel)]="remarks" 
+                            required
+                            #model_remarks='ngModel'
+                        >
+                        </textarea>
+                    </div>
+                </div>
+                <div class="d-input__comments">
+                    <ul>
+                        <li *ngFor="let remarks of remarksList">{{remarks}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="d-input__wrapper d-marginTop">
+            <form #uploadForm="ngForm">
+                <div class="d-input width-auto">
+                    <div class="d-input__files">
+                        <input 
+                            type="file"
+                            multiple
+                            (change)="onFileSelected($event)"
+                            [ngStyle]="{'display':'none'}"
+                            #fileInput
+                        >
+                        <div class="d-attachment" (click)="fileInput.click()">
+                            <span class="icon icon-attach"></span>
+                            <span>Attach Documents</span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="d-input__wrapper d-marginTop" *ngIf="fileuploader.success">
+            <div class="d-input__uploadfiles">
+                <ul>
+                    <li *ngFor="let files of uploadedFiles">
+                        {{files}} 
+                    </li>
+                </ul>
+                <div class="d-progressbar" *ngIf="fileuploader.uploadbar">
+                    <span [ngStyle]={width:fileuploader.percentage}></span>
+                </div>
+                <span class="d-progressbar__status">{{fileuploader.status}}</span>
+            </div>
+        </div>
+        <div class="d-input__wrapper d-marginTop" *ngIf="attachfiles">
+            <div class="d-input__uploaded">
+                <ul>
+                    <li *ngFor="let files of attachfiles; let i = index;">
+                        <a [href]="files" target="_blank">File {{i+1}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <app-fe-actions
+            [model_remarks]="model_remarks.invalid"
+            [fileUpload]="fileUpload"
+            (updateButton)="update()"
+            (SBAButton)="sendBackToAnchor()"
+            (processButton)="process()"
+            (uploadButton)="onUpload()"
+        >
+        </app-fe-actions>
+        <!-- <div class="d-input__button">
+            <button class="d-button d-button__anchor" *ngIf="roleid == 3">
+                <span>&laquo; Send Back to Anchor</span>
+            </button>
+            <button class="d-button d-button__update" [disabled]="model_remarks.invalid" (click)="update()">
+                <span>Update </span>
+            </button>
+            <button class="d-button"  style="display:none" [disabled]="!fileUpload" (click)="onUpload()">
+                <span>Upload File</span>
+            </button>
+            <button class="d-button"  style="display:none" [disabled]="model_remarks.invalid" (click)="process()">
+                <div *ngIf="!loader else showSpinner">
+                   <span>
+                     Process 
+                   </span>
+                </div>
+                    <ng-template #showSpinner>
+                        <div class="spinner" [ngClass]="{'show':loader}">
+                            <div class="rect1"></div>
+                            <div class="rect2"></div>
+                            <div class="rect3"></div>
+                            <div class="rect4"></div>
+                            <div class="rect5"></div>
+                        </div>
+                    </ng-template>
+                    <ng-template #promangager>
+                        Send for Finance Manager Approval
+                    </ng-template>
+            </button>
+        </div> -->
+    </div>
+</div>

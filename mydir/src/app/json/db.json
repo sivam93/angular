@@ -1,0 +1,117 @@
+{
+   "invoice":[  
+      {  
+         "totalamount":"2088164.65",
+         "receivedamount":"568090.65",
+         "balance":"1520074",
+         "totalinvoice":"11",
+         "invoicenottagged":"7",
+         "salaryprocessed":"2",
+         "salarytobereleased":"3",
+         "financeexceptions":"4",
+         "clientcounts":"[{\"totalassociates\":100,\"totalclients\":2,\"locked_client\":0}]",
+         "Mostprobable":"2"
+      }
+   ],
+   "untagged":[  
+      {  
+         "client_id":"234",
+         "client_name":"TeamLease Services Ltd...",
+         "invoice_no":"TL29T1920/697",
+         "invoice_amount":"1416.00",
+         "invoice_date":"4/9/19 6:53:24 PM",
+         "payment_amount":null,
+         "adjusted_amount":null,
+         "tds":null,
+         "payment_date":null,
+         "balance":null,
+         "modeof_payment":null,
+         "utr_number":null
+      },
+      {  
+         "client_id":"234",
+         "client_name":"TeamLease Services Ltd...",
+         "invoice_no":"TL29T1819/4585",
+         "invoice_amount":"584808.00",
+         "invoice_date":"5/9/18 12:00:00 AM",
+         "payment_amount":null,
+         "adjusted_amount":null,
+         "tds":null,
+         "payment_date":null,
+         "balance":null,
+         "modeof_payment":null,
+         "utr_number":null
+      },
+      {  
+         "client_id":"234",
+         "client_name":"TeamLease Services Ltd...",
+         "invoice_no":"TL29T1920/2242",
+         "invoice_amount":"152220.00",
+         "invoice_date":"4/19/19 12:00:00 AM",
+         "payment_amount":null,
+         "adjusted_amount":null,
+         "tds":null,
+         "payment_date":null,
+         "balance":null,
+         "modeof_payment":null,
+         "utr_number":null
+      },
+      {  
+         "client_id":"234",
+         "client_name":"TeamLease Services Ltd...",
+         "invoice_no":"TL29T1920/1035",
+         "invoice_amount":"3540.00",
+         "invoice_date":"4/15/19 2:45:23 PM",
+         "payment_amount":null,
+         "adjusted_amount":null,
+         "tds":null,
+         "payment_date":null,
+         "balance":null,
+         "modeof_payment":null,
+         "utr_number":null
+      },
+      {  
+         "client_id":"234",
+         "client_name":"TeamLease Services Ltd...",
+         "invoice_no":"TL29T1920/2244",
+         "invoice_amount":"152220.00",
+         "invoice_date":"4/19/19 12:00:00 AM",
+         "payment_amount":null,
+         "adjusted_amount":null,
+         "tds":null,
+         "payment_date":null,
+         "balance":null,
+         "modeof_payment":null,
+         "utr_number":null
+      },
+      {  
+         "client_id":"234",
+         "client_name":"TeamLease Services Ltd...",
+         "invoice_no":"TL29T1920/6101",
+         "invoice_amount":"11800.00",
+         "invoice_date":"5/13/19 12:00:00 AM",
+         "payment_amount":null,
+         "adjusted_amount":null,
+         "tds":null,
+         "payment_date":null,
+         "balance":null,
+         "modeof_payment":null,
+         "utr_number":null
+      },
+      {  
+         "client_id":"234",
+         "client_name":"TeamLease Services Ltd...",
+         "invoice_no":"SO/MUM/10/09/144",
+         "invoice_amount":"1.00",
+         "invoice_date":"3/12/14 12:00:00 AM",
+         "payment_amount":null,
+         "adjusted_amount":null,
+         "tds":null,
+         "payment_date":null,
+         "balance":null,
+         "modeof_payment":null,
+         "utr_number":null
+      }
+   ]
+}
+

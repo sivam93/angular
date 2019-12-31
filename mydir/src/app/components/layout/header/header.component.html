@@ -1,0 +1,15 @@
+<header>
+  <div class="d-header" [ngClass]="{'show':menu}">
+    <div class="d-spacer"></div>
+    <a (click)="openMenu($event)" class="d-header__menu">
+      <span>{{exactName}}</span>
+    </a>
+    <div class="d-header__menu-block">
+      <ul>
+        <li>
+          <a (click)="logout()" title="Logout">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

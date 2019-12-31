@@ -1,0 +1,16 @@
+.d-tabs__contenttable
+{
+    table 
+    {
+        tr 
+        {
+            th
+            {
+                &.status-width
+                {
+                    width:200px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,47 @@
+.d-input__checkbox
+{
+    position: relative;
+    input[type="checkbox"]
+    {
+        opacity: 0;
+        position: absolute;
+    }
+    input[type="checkbox"]:checked + label 
+    {
+        &:after 
+        {
+            left: 3px;
+            width: 7px;
+            height: 13px;
+            border-right: solid 3px #3fb768;
+            border-bottom: solid 3px #3fb768;
+            transform: rotate(45deg);
+        }
+    }
+    label 
+    {
+        color:#5a667e;
+        font-size: 16px;
+        position: relative;
+        padding-left: 22px;
+        cursor: pointer;
+        &:before 
+        {
+            position: absolute;
+            content:"";
+            left:0;
+            display: block;
+            width:15px;
+            height: 15px;
+            border:solid thin #d9ddf5;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        &:after 
+        {
+            content:"";
+            position: absolute;
+        }
+    }
+}

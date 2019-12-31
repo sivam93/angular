@@ -1,0 +1,47 @@
+<div class="d-tabs__content d-marginBottom" *ngIf="!(loading$ | async) else showloader">
+    <app-searchinvoices
+        [place]="'Client ID or Invoice No'"
+        (search)="searchInput($event)"
+    >
+    </app-searchinvoices>
+    <div class="d-tabs__contenttable" *ngIf="(tableContent$ | async | searchInvoices : searchText)?.length > 0 else noData">
+        <table>
+            <tr>
+                <th [attr.colspan]="tableHeaders.length" class="d-tabs__head">
+                    <app-tableheader
+                        [headerContent]="tableHeaders"
+                        [module]="'salaryrelease'"
+                    >
+                    </app-tableheader>
+                </th>
+            </tr>
+            <tr *ngFor="let head of tableContent$ | async | searchInvoices : searchText | paginate: { itemsPerPage: 10, currentPage: p }">
+                <td [attr.colspan]="tableHeaders.length">
+                    <app-srdetails
+                        [tableContent]="head" 
+                        [tableButton]="tableButton" 
+                        [userStatus]="userStatus"   
+                    >
+                    </app-srdetails>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="d-pagination d-marginTop" *ngIf="(tableContent$ | async | searchInvoices : searchText)?.length > 0">
+        <div class="d-spacer"></div>
+        <pagination-controls class="d-pagination__block"
+            (pageChange)="p = $event"
+            responsive="true"
+            previousLabel=""
+            nextLabel=""
+        >
+        </pagination-controls>
+    </div>
+</div>
+<ng-template #showloader>
+    <div>Please wait, Salary Release Datas are Loading.....</div>
+</ng-template>
+
+<ng-template #noData>
+    <div>No Data Found</div>
+</ng-template>

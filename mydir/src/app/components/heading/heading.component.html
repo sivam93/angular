@@ -1,0 +1,43 @@
+<div class="d-heading d-marginTop d-marginBottom">
+  <h1>
+    <ng-container *ngIf="backButton">
+        <span class="icon-backarrow" [routerLink]="backUrl"></span> 
+    </ng-container>
+   {{heading}}
+  </h1>
+  <div class="d-cycle" *ngIf="pdcCycle">
+    {{pdcCycle}}
+    <span>PDC Cycle</span>
+    <div class="d-cycle__select">
+      <span>
+        {{pdccycle.selectedYear}}
+      </span>
+      <select 
+       name="year" 
+       id=""
+       [(ngModel)]="pdccycle.year" 
+       (ngModelChange)="selectYear(pdccycle.year)"
+       >
+        <option *ngFor="let year of years" [value]="year.value" [selected]="year.value == pdccycle.selectedYear">{{year.value}}</option>
+      </select>
+    </div>
+    <div class="d-cycle__select">
+       <span [ngClass]="{error: pdccycle.error}">
+         {{pdccycle.selectedMonth}}
+       </span>
+       <select 
+        name="month" 
+        id=""
+        [(ngModel)]="pdccycle.month" 
+        (ngModelChange)="selectMonth(pdccycle.month)"
+        >
+         <option *ngFor="let month of months" [value]="month.value" [selected]="month.name == pdccycle.selectedMonth">{{month.name}}</option>
+       </select>
+    </div>
+  </div>
+  <div class="d-input__button d-escalate" *ngIf="escalation">
+    <button class="d-button">
+        <span>Escalate to Client</span>  
+    </button>
+  </div>
+</div>

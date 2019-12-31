@@ -1,0 +1,68 @@
+@import "../../../../css/variables";
+
+.d-nav
+{
+    position: fixed;
+    top:0;
+    bottom: 0;
+    min-height: 600px;
+    background: $secondary-color;
+    width:100px;
+    font-family: $font-family-sec;
+    &logo 
+    {
+        margin: 25px 0;
+        padding: 0 10px;
+        a 
+        {
+            display: block;
+            img 
+            {
+                width:100%;
+                display: block;
+            }
+        }
+    }
+    ul 
+    {
+        padding:0 8px;
+        li 
+        {
+            margin-bottom: 25px;
+            a 
+            {
+                color:rgba($white-color,0.5);
+                display: block;
+                text-align: center;
+                font-size: $font-size-small;
+                font-weight: 600;
+                padding-top: 40px;
+                padding-bottom: 7px;
+                height: 15px;
+                line-height: 15px;
+                border-radius: $border-radius;
+                text-decoration: none;
+                cursor: pointer;
+                &:hover 
+                {
+                    color:rgba($white-color,1);
+                }
+                &:before 
+                {
+                    width:20px;
+                    height: 20px;
+                    background-size:contain; 
+                    left:0;
+                    right:0;
+                    margin: auto;
+                    bottom:32px;
+                }
+                &.active 
+                {
+                    background: $nav-active;
+                    color:rgba($white-color,1);
+                }
+            }
+        }
+    }
+}

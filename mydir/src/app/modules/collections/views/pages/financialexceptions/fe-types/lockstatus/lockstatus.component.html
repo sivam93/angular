@@ -1,0 +1,50 @@
+<div class="d-info__exceptions-block"> 
+    {{exception}} 
+    <ng-container *ngIf="!single">
+        <a class="view-exception"
+        href="javascript:void(0)"
+        (click)="showException = !showException" 
+        >
+            <span *ngIf="!showException; else showDone">View</span>
+            <ng-template #showDone>Close</ng-template>
+        </a>
+    </ng-container>
+    <div *ngIf="showException" class="d-info__exceptions-wrapper">
+        <app-fe-excinfo
+            [data]="commonData"
+        >
+        </app-fe-excinfo>
+        <div class="d-input__wrapper d-marginTop">
+            <div class="d-input width-auto">
+                <div class="d-input__text">
+                    Remarks
+                </div>
+                <div class="d-input__block">
+                    <div class="d-input__textarea">
+                        <textarea
+                            name="remarks" 
+                            [(ngModel)]="remarks" 
+                            required
+                            #model_remarks='ngModel'
+                        >
+                        </textarea>
+                    </div>
+                </div>
+                <div class="d-input__comments">
+                    <ul>
+                        <li *ngFor="let remarks of remarksList">{{remarks}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <app-fe-actions
+            [model_remarks]="model_remarks.invalid"
+            (updateButton)="update()"
+            (SBAButton)="sendBackToAnchor()"
+            (processButton)="process()"
+            (uploadButton)="onUpload()"
+        >
+        </app-fe-actions>
+    </div>
+</div>
+

@@ -1,0 +1,90 @@
+<div class="d-info__exceptions-block"> 
+    {{exception}} 
+    <ng-container *ngIf="!single">
+        <a class="view-exception"
+        href="javascript:void(0)"
+        (click)="showException = !showException" 
+        >
+            <span *ngIf="!showException; else showDone">View</span>
+            <ng-template #showDone>Close</ng-template>
+        </a>
+    </ng-container>
+    <div *ngIf="showException" class="d-info__exceptions-wrapper">
+        <app-fe-excinfo
+            [data]="commonData"
+        >
+        </app-fe-excinfo>
+        <div class="d-input__wrapper inner-table d-marginTop">
+            <div class="d-input width-auto no-flex">
+                <div class="d-input__text">
+                    Zero Net Pay Reflecting for associates
+                </div>
+            </div>
+        </div>
+        
+        <div class="inner-table d-marginTop">
+            <div class="d-inner__table">
+              <table>
+                <tr>
+                  <th>Type</th>
+                  <th>Employee No</th>
+                  <th>Employee Name</th>
+                  <th>Client ID</th>
+                  <th>Client Name</th>
+                  <th>Stop Month</th>
+                  <th>Processing Month</th>
+                </tr>
+                <tr *ngFor="let tabdata of exceptionInfo.tabdata">
+                  <td>{{tabdata.TYPE}}</td>
+                  <td>{{tabdata.EMP_NO}}</td>
+                  <td>{{tabdata.EMP_NAME}}</td>
+                  <td>{{tabdata.CLIENT_ID}}</td>
+                  <td>{{tabdata.CLIENT_NAME}}</td>
+                  <td>{{tabdata.STOP_MONTH_YEAR}}</td>
+                  <td>{{tabdata.PROCESSING_MONTH_YEAR}}</td>
+                </tr>
+              </table>
+            </div>
+        </div>
+        <div class="d-input__wrapper d-marginTop">
+                <div class="d-input width-auto">
+                    <div class="d-input__text">
+                        Remarks
+                    </div>
+                    <div class="d-input__block">
+                        <div class="d-input__textarea">
+                            <textarea
+                                name="remarks" 
+                                [(ngModel)]="remarks" 
+                                required
+                                #model_remarks='ngModel'
+                            >
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="d-input__comments">
+                        <ul>
+                            <li *ngFor="let remarks of remarksList">{{remarks}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        <app-fe-actions
+            [model_remarks]="model_remarks.invalid"
+            (updateButton)="update()"
+            (SBAButton)="sendBackToAnchor()"
+            (processButton)="process()"
+            (uploadButton)="onUpload()"
+        >
+        </app-fe-actions>
+    </div>
+</div>
+<ng-template #showSpinner>
+    <div class="spinner" [ngClass]="{'show':loader}">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+    </div>
+</ng-template>

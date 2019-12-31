@@ -1,0 +1,81 @@
+@import "../../../css/_variables.scss";                // Import Variables 
+.d-heading
+{
+    position: relative;
+    h1 
+    {
+        font-size: 26px;
+        color:$heading-color-primary;
+        font-weight:600;
+    }
+    .d-cycle
+    {
+        position: absolute;
+        right:0;
+        top:0;
+    }
+}
+.d-cycle
+{
+    display: flex;
+    align-items: center;
+    height: 35px;
+    line-height: 35px;
+    font-size: 12px;
+    > span 
+    {
+        display: inline-block;
+        margin-right: 10px;
+    }
+    &__select 
+    {
+        position: relative;
+        display: inline-block;
+        margin-right: 10px;
+        span 
+        {
+            position: absolute;
+            border:solid 1px $border-color-1;
+            width:118px;
+            padding:0 10px;
+            right:0;
+            background: $white-color url(src/assets/icon-arrowdown-1.svg) no-repeat 90% center;
+            box-shadow: 0 2px 4px 0 #e9effd;
+            color:$secondary-color;
+            &.error 
+            {
+                border:solid thin #ff0000;
+            }
+        }
+        select 
+        {
+            opacity: 0;
+            width:140px;
+            line-height: 37px;
+            height: 37px;
+        }
+        &:last-child 
+        {
+            margin-right: 0;
+        }
+    }
+}
+
+.d-backarrow
+{
+    width:30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.d-escalate
+{
+    position: absolute;
+    right: 0;
+    top:0;
+    margin-top: 0;
+    button 
+    {
+        padding: 0 20px;
+    }
+}

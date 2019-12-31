@@ -1,0 +1,157 @@
+@import "../../../../../css/variables";
+
+.d-chart 
+{
+    display: flex;
+    &__section 
+    {
+        flex:1;
+        margin-right: 30px;
+        background: $white-color;
+        border-radius: 10px;
+        padding:15px 20px;
+        box-shadow: $box-shadow;
+        &:last-child 
+        {
+            margin-right: 0;
+        }
+    }
+    &__heading 
+    {
+        font-size: $font-size-extraLarge;
+        font-weight: 600;
+        color:$secondary-color;
+        padding-bottom: 10px;
+        border-bottom: solid thin $border-color-2;
+    }
+    &__block
+    {
+        margin-top: 9px;
+        display: flex;
+        align-items: center;
+        > div 
+        {
+        }
+    }
+    &__graph
+    {
+      min-width:130px;
+    }
+    &__content
+    {
+      flex:0.5;
+        table
+        {   
+          width : 240px;
+            tr 
+            {   
+                margin-left:2px;
+                th,td 
+                {
+                    text-align: left;
+                }
+                th 
+                {
+                    color:$grey-color;
+                    font-size: $font-size-extraLarge;
+                    font-weight: 600;
+                    padding-bottom: 20px;
+                }
+                td 
+                {
+                    color:$grey-color-light;
+                    font-size: $font-size-small + 1;
+                    padding:5px 0;
+                    line-height: 16px;
+                    position: relative;
+                    span 
+                    {
+                        &.color 
+                        {
+                          width:9px;
+                          height: 9px;
+                          border-radius: 50%;
+                          display: inline-block;
+                          margin-right: 10px;
+                          position: absolute;
+                          left:0;
+                          top:0;
+                          bottom: 0;
+                          margin: auto;
+                        }
+                    }
+                    &:first-child 
+                    {
+                      padding-left: 27px;
+                    }
+                    strong 
+                    {
+                      font-weight:600;
+                    }
+                }
+                .count 
+                {
+                  padding-left: 50px;
+                }
+            }
+        }
+    }
+}
+
+.d-nopiechart
+{
+  width:100px;
+  height: 100px;
+  line-height: 100px;
+  border-radius:50%;
+  border:solid 15px rgba($secondary-color,0.3);
+  margin: auto;
+  font-size: 12px;
+}
+
+
+.lds-loader
+{
+    position: relative;
+}
+.lds-ring {
+    display: inline-block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    left:0;
+    right:0;
+    top:50%;
+    margin: auto;
+    transform: translateY(-50%);
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 51px;
+    height: 51px;
+    margin: 6px;
+    border: 6px solid $nav-active;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: $nav-active transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

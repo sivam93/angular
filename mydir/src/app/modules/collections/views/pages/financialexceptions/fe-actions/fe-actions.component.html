@@ -1,0 +1,30 @@
+<div class="d-input__button">
+    <button class="d-button d-button__anchor" click="sendBackToAnchor()" *ngIf="roleid == 3">
+        <span>&laquo; Send Back to Anchor</span>
+    </button>
+    <button class="d-button d-button__update" [disabled]="model_remarks" (click)="update()">
+        <span>Update </span>
+    </button>
+    <button class="d-button" [disabled]="!fileUpload" (click)="onUpload()">
+        <span>Upload File</span>
+    </button>
+    <button class="d-button"  style="display:none" [disabled]="model_remarks" (click)="process()">
+        <div *ngIf="!loader else showSpinner">
+           <span>
+             Process 
+           </span>
+        </div>
+            <ng-template #showSpinner>
+                <div class="spinner" [ngClass]="{'show':loader}">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+            </ng-template>
+            <ng-template #promangager>
+                Send for Finance Manager Approval
+            </ng-template>
+    </button>
+</div>

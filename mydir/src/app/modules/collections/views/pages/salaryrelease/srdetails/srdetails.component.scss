@@ -1,0 +1,21 @@
+.status-width
+{
+    width:200px;
+    .d-button
+    {
+        max-width:100%;
+        font-size:12px;
+        &.approved 
+        {
+            border:solid thin #c5e0fc;
+            background: #f4f9ff;
+            color:#5d99d7;
+        }
+        &.pending 
+        {
+            border:solid thin #fabe8c;
+            background: #fff9f4;
+            color:#d68139;
+        }
+    }
+}

@@ -1,0 +1,110 @@
+@import "src/css/_variables.scss";                  // Import Variables 
+
+.d-scroll{
+    
+    display: flex;
+    align-items: center;
+    height: 35px;
+    line-height: 35px;
+    font-size: 12px;
+    margin-left: 635px;
+    position:absolute;
+     top:470px;
+     right:32px;
+    > span 
+    {
+        display: inline-block;
+        margin-right: 6px;
+        color: #353f84;
+       
+        font-size: 12px;
+        font-weight: 600;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;        
+
+    }
+    &__select 
+    {
+            position: relative;
+            display: inline-block;
+            margin-right: 10px;
+        span 
+        {
+            position: absolute;
+            border:solid 1px $border-color-1;
+            width:118px;
+            padding:0 10px;
+            right:0;
+            background: $white-color url(src/assets/icon-arrowdown-1.svg) no-repeat 90% center;
+            box-shadow: 0 2px 4px 0 #e9effd;
+            color:$secondary-color;
+            &.error 
+            {
+                border:solid thin #ff0000;
+            }
+        }
+        select 
+        {
+            opacity: 0;
+            width:140px;
+            line-height: 37px;
+            height: 37px;
+        }
+        &:last-child 
+        {
+            margin-right: 0;
+        }
+    }
+    >button{
+    font-size: 12px;
+    width: 94px;
+    height:30px;
+    font-weight: normal;
+    color: #4381c1;
+    border: solid 1px #4381c1;
+    border-radius: 5px;
+    background-color: #f7f9fd;
+    margin-right:9px
+    }
+}
+.d-additional{
+    select{
+    align-items: center;
+    width:130px !important;
+    height: 37px !important;
+    text-indent: 12px;
+    margin-right:6px;
+    }
+}
+.d-filter{
+    select{
+        position: relative;
+        display: inline-block;
+        font-size:14px;
+        border:solid 1px $border-color-1;
+        border-radius: 4px;
+        background: $white-color url(src/assets/icon-arrowdown-1.svg) no-repeat 90% center;
+        box-shadow: 0 2px 4px 0 #e9effd;
+        color:$secondary-color;
+        width:231px;
+        line-height: 37px;
+        height: 37px;
+        text-align:center ;
+        -webkit-appearance: none;
+       
+    }
+    select:hover {
+        border:solid 1px #353f84;
+      }
+    select:after{
+        border:solid 1px #353f84;
+    }
+}
+.d-span{
+   // margin-left:325px;
+    >select{
+    width:190px !important;
+    }
+}
